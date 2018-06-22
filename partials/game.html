@@ -2,7 +2,7 @@
 VF = Vex.Flow;
 
 // Create an SVG renderer and attach it to the DIV element named "boo".
-var div = document.getElementById("boo")
+var div = document.getElementsByClassName("boo")
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
 // Configure the rendering context.
@@ -68,7 +68,7 @@ stave.setContext(context).draw();
                 </div>
                 <div class="panel-body">
 
-                    <div id="boo"></div>
+                    <div class="boo"></div>
 
                     <h3 class="panel-title price">$19
                         <span class="price-cents">99</span>
