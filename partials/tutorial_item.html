@@ -1,3 +1,21 @@
+<script type="text/javascript">
+
+    VF = Vex.Flow;
+
+    var div = document.getElementById("graphic")
+    var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+
+    renderer.resize(680, 240);
+    renderer.ctx.setViewBox(0, 0, 325, 120);
+    var context = renderer.getContext();
+    context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+
+    var stave = new VF.Stave(10, 0, 320);
+
+    stave.setContext(context).draw();
+
+</script>
+
 <div class="container">
 
     <div class="row">
@@ -20,13 +38,10 @@
         <div class="col-lg-8">
 
             <hr>
-            <img src="http://placehold.it/900x300" class="img-responsive">
+            <div id="graphic"></div>
             <hr>
 
-            <p>Cookie jelly beans soufflé icing. Gummi bears tootsie roll powder chupa chups cheesecake chocolate
-                jelly-o lollipop lollipop. Halvah applicake chupa chups. Marshmallow chocolate jujubes icing lollipop
-                gummi bears chupa chups pudding bonbon. Jelly beans jelly soufflé jujubes. Sesame snaps lollipop icing
-                donut lemon drops soufflé.</p>
+            <p>Tester 1717</p>
 
             <p>Donut caramels gingerbread. Sweet roll macaroon pastry cotton candy oat cake sesame snaps biscuit lemon
                 drops dessert. Candy canes carrot cake danish carrot cake soufflé jelly chocolate cake muffin. Topping
@@ -55,13 +70,13 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#dinosaurs">1) </a>
+                            <li><a href="#/tutorial1-1">1) The Musical Staff</a>
                             </li>
-                            <li><a href="#spaceships">2) </a>
+                            <li><a href="#/tutorial1-2">2) The Treble Clef</a>
                             </li>
-                            <li><a href="#fried-foods">3) </a>
+                            <li><a href="#/tutorial1-3">3) Time Signature</a>
                             </li>
-                            <li><a href="#wild-animals">4) </a>
+                            <li><a href="#/tutorial1-4">4) First Five Notes</a>
                             </li>
                         </ul>
                     </div>
