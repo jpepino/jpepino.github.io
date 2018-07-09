@@ -104,6 +104,7 @@ body {
 
 .graphic {
     zoom: 2.0;
+    -moz-transform: scale(2.0);
 }
 
 /* 404 Page Styles */
