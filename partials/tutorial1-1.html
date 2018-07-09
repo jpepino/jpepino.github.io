@@ -8,12 +8,12 @@
 
     // Configure the rendering context.
     renderer.resize(600, 300);
-    renderer.ctx.setViewBox(0, 0, 350, 150);
+    renderer.ctx.setViewBox(0, 0, 425, 150);
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
     // Create a stave of width 400 at position 10, 40 on the canvas.
-    var stave = new VF.Stave(10, 10, 300);
+    var stave = new VF.Stave(10, 10, 400);
 
     // Add a clef and time signature.
     stave.addClef("treble").addTimeSignature("4/4");
