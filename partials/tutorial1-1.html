@@ -7,12 +7,12 @@
     var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
     // Configure the rendering context.
-    renderer.resize(900, 300);
+    renderer.resize(700, 500);
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
     // Create a stave of width 400 at position 10, 40 on the canvas.
-    var stave = new VF.Stave(10, 40, 800);
+    var stave = new VF.Stave(10, 40, 400);
 
     // Add a clef and time signature.
     stave.addClef("treble").addTimeSignature("4/4");
@@ -49,7 +49,7 @@
 
             <div id="graphic"></div>
 
-            <p>Tester 1608</p>
+            <p>Tester 1619</p>
 
             <p>Donut caramels gingerbread. Sweet roll macaroon pastry cotton candy oat cake sesame snaps biscuit lemon
                 drops dessert. Candy canes carrot cake danish carrot cake soufflé jelly chocolate cake muffin. Topping
