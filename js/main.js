@@ -22,9 +22,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/tutorial1-1", {templateUrl: "partials/tutorial1-1.html", controller: "BlogCtrl"})
     .when("/tutorial1-2", {templateUrl: "partials/tutorial1-2.html", controller: "BlogCtrl"})
     .when("/tutorial1-3", {templateUrl: "partials/tutorial1-3.html", controller: "BlogCtrl"})
-    .when("/tutorial1-4", {templateUrl: "partials/tutorial1-4.html", controller: "BlogCtrl"})
-    .when("/tutorial1-5", {templateUrl: "partials/tutorial1-5.html", controller: "BlogCtrl"})
-    .when("/tutorial1-6", {templateUrl: "partials/tutorial1-6.html", controller: "BlogCtrl"})
+    .when("/tutorial2-1", {templateUrl: "partials/tutorial2-1.html", controller: "BlogCtrl"})
+    .when("/tutorial2-2", {templateUrl: "partials/tutorial2-2.html", controller: "BlogCtrl"})
+    .when("/tutorial2-3", {templateUrl: "partials/tutorial2-3.html", controller: "BlogCtrl"})
+    .when("/tutorial2-4", {templateUrl: "partials/tutorial2-4.html", controller: "BlogCtrl"})
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
