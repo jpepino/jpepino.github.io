@@ -1,138 +1,230 @@
-<script src="https://unpkg.com/vexflow/releases/vexflow-debug.js">
+<script type="text/javascript">
+// Basic setup boilerplate for using VexFlow with the SVG rendering context:
 VF = Vex.Flow;
 
 // Create an SVG renderer and attach it to the DIV element named "boo".
-var div = document.getElementsByClassName("boo")
+var div = document.getElementById("boo")
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
 // Configure the rendering context.
 renderer.resize(500, 500);
 var context = renderer.getContext();
-context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-// Create a stave of width 400 at position 10, 40 on the canvas.
-var stave = new VF.Stave(10, 40, 400);
+// A tickContext is required to draw anything that would be placed
+// in relation to time/rhythm, including StaveNote which we use here.
+// In real music, this allows VexFlow to align notes from multiple
+// voices with different rhythms horizontally. Here, it doesn't do much
+// for us, since we'll be animating the horizontal placement of notes,
+// but we still need to add our notes to a tickContext so that they get
+// an x value and can be rendered.
+//
+// If we create a voice, it will automatically apply a tickContext to our
+// notes, and space them relative to each other based on their duration &
+// the space available. We definitely do not want that here! So, instead
+// of creating a voice, we handle that part of the drawing manually.
+var tickContext = new VF.TickContext();
 
-// Add a clef and time signature.
-stave.addClef("treble").addTimeSignature("4/4");
+// Create a stave of width 10000 at position 10, 40 on the canvas.
+var stave = new VF.Stave(10, 10, 10000)
+.addClef('treble');
 
 // Connect it to the rendering context and draw!
 stave.setContext(context).draw();
+
+var durations = ['8', '4', '2', '1'];
+
+var notes = [
+['c', '#', '4'],
+['e', 'b', '5'],
+['g', '', '5'],
+['d', 'b', '4'],
+['b', 'bb', '3'],
+['a', 'b', '4'],
+['f', 'b', '5'],
+].map(([letter, acc, octave]) => {
+const note = new VF.StaveNote({
+clef: 'treble',
+keys: [`${letter}${acc}/${octave}`],
+duration: durations[Math.floor(Math.random()*durations.length)],
+})
+.setContext(context)
+.setStave(stave);
+
+// If a StaveNote has an accidental, we must render it manually.
+// This is so that you get full control over whether to render
+// an accidental depending on the musical context. Here, if we
+// have one, we want to render it. (Theoretically, we might
+// add logic to render a natural sign if we had the same letter
+// name previously with an accidental. Or, perhaps every twelfth
+// note or so we might render a natural sign randomly, just to be
+// sure our user who's learning to read accidentals learns
+// what the natural symbol means.)
+if(acc) note.addAccidental(0, new VF.Accidental(acc));
+tickContext.addTickable(note)
+return note;
+});
+
+// The tickContext.preFormat() call assigns x-values (and other
+// formatting values) to notes. It must be called after we've
+// created the notes and added them to the tickContext. Or, it
+// can be called each time a note is added, if the number of
+// notes needed is not known at the time of bootstrapping.
+//
+// To see what happens if you put it in the wrong place, try moving
+// this line up to where the TickContext is initialized, and check
+// out the error message you get.
+//
+// tickContext.setX() establishes the left-most x position for all
+// of the 'tickables' (notes, etc...) in a context.
+tickContext.preFormat().setX(400);
+
+// This will contain any notes that are currently visible on the staff,
+// before they've either been answered correctly, or plumetted off
+// the staff when a user fails to answer them correctly in time.
+// TODO: Add sound effects.
+const visibleNoteGroups = [];
+
+// Add a note to the staff from the notes array (if there are any left).
+document.getElementById('add-note').addEventListener('click', (e) => {
+note = notes.shift();
+if(!note) return;
+const group = context.openGroup();
+visibleNoteGroups.push(group);
+note.draw();
+context.closeGroup();
+group.classList.add('scroll');
+// Force a dom-refresh by asking for the group's bounding box. Why? Most
+// modern browsers are smart enough to realize that adding .scroll class
+// hasn't changed anything about the rendering, so they wait to apply it
+// at the next dom refresh, when they can apply any other changes at the
+// same time for optimization. However, if we allow that to happen,
+// then sometimes the note will immediately jump to its fully transformed
+// position -- because the transform will be applied before the class with
+// its transition rule.
+const box = group.getBoundingClientRect();
+group.classList.add('scrolling');
+
+// If a user doesn't answer in time make the note fall below the staff
+window.setTimeout(() => {
+const index = visibleNoteGroups.indexOf(group);
+if(index === -1) return;
+group.classList.add('too-slow');
+visibleNoteGroups.shift();
+}, 5000);
+});
+
+// If a user plays/identifies the note in time, send it up to note heaven.
+document.getElementById('right-answer').addEventListener('click', (e) => {
+group = visibleNoteGroups.shift();
+group.classList.add('correct');
+// The note will be somewhere in the middle of its move to the left -- by
+// getting its computed style we find its x-position, freeze it there, and
+// then send it straight up to note heaven with no horizontal motion.
+const transformMatrix = window.getComputedStyle(group).transform;
+// transformMatrix will be something like 'matrix(1, 0, 0, 1, -118, 0)'
+// where, since we're only translating in x, the 4th property will be
+// the current x-translation. You can dive into the gory details of
+// CSS3 transform matrices (along with matrix multiplication) if you want
+// at http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/
+const x = transformMatrix.split(',')[4].trim();
+// And, finally, we set the note's style.transform property to send it skyward.
+group.style.transform = `translate(${x}px, -800px)`;
+})
 </script>
+
+<div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Specialists');"></div>
+            <div class="carousel-caption">
+                <h1>Reduce costs of finishing operations by 65%</h1>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Wordlwide');"></div>
+            <div class="carousel-caption">
+                <h1>International Buyer Financing Available</h1>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Since 1910');"></div>
+            <div class="carousel-caption">
+                <h1>Family Owned for Four Generations</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</div>
+
+<div class="section-colored text-center">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>SightReader</h2>
+                <p>Learn how to sight-read music and test your abilities!</p>
+                <hr>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.section-colored -->
+
+<div class="section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div id="game_container">
+                <div id="boo"></div>
+            </div>
+            <div id="controls">
+                <button id='add-note'>Add Note</button>
+                <button id='right-answer'>Right Answer</button>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.section -->
 
 <div class="container">
 
-    <div class="row">
-
-        <div class="col-lg-12">
-            <h1 class="page-header">Pricing Table
-                <small>Our Pricing Options</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a>
-                </li>
-                <li class="active">Pricing Table</li>
-            </ol>
+    <div class="row well">
+        <div class="col-lg-8 col-md-8">
+            <h4>Start learning how to read music now!</h4>
+            <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
-
+        <div class="col-lg-4 col-md-4">
+            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial_item">Begin Tutorial</a>
+        </div>
     </div>
-
-    <div class="row">
-
-        <div class="col-sm-3">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <strong>Basic</strong>
-                </div>
-                <div class="panel-body">
-                    <h3 class="panel-title price">$9
-                        <span class="price-cents">99</span>
-                        <span class="price-month">mo.</span>
-                    </h3>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">5 Projects</li>
-                    <li class="list-group-item">5 GB of Storage</li>
-                    <li class="list-group-item">Up to 100 Users</li>
-                    <li class="list-group-item">10 GB Bandwidth</li>
-                    <li class="list-group-item">Security Suite</li>
-                    <li class="list-group-item"><a class="btn btn-primary">Sign Up Now!</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <strong>Plus</strong>
-                </div>
-                <div class="panel-body">
-
-                    <div class="boo"></div>
-
-                    <h3 class="panel-title price">$19
-                        <span class="price-cents">99</span>
-                        <span class="price-month">mo.</span>
-                    </h3>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">10 Projects</li>
-                    <li class="list-group-item">10 GB of Storage</li>
-                    <li class="list-group-item">Up to 250 Users</li>
-                    <li class="list-group-item">25 GB Bandwidth</li>
-                    <li class="list-group-item">Security Suite</li>
-                    <li class="list-group-item"><a class="btn btn-primary">Sign Up Now!</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <strong>Premium <span class="label label-success">Best Value!</span></strong>
-                </div>
-                <div class="panel-body">
-                    <h3 class="panel-title price">$29
-                        <span class="price-cents">99</span>
-                        <span class="price-month">mo.</span>
-                    </h3>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">Unlimited</li>
-                    <li class="list-group-item">50 GB of Storage</li>
-                    <li class="list-group-item">Up to 1000 Users</li>
-                    <li class="list-group-item">100 GB Bandwidth</li>
-                    <li class="list-group-item">Security Suite</li>
-                    <li class="list-group-item"><a class="btn btn-primary">Sign Up Now!</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
-                    <strong>Ultimate</strong>
-                </div>
-                <div class="panel-body">
-                    <h3 class="panel-title price">$49
-                        <span class="price-cents">99</span>
-                        <span class="price-month">mo.</span>
-                    </h3>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">Unlimited</li>
-                    <li class="list-group-item">150 GB of Storage</li>
-                    <li class="list-group-item">Unlimited</li>
-                    <li class="list-group-item">500 GB Bandwidth</li>
-                    <li class="list-group-item">Security Suite</li>
-                    <li class="list-group-item"><a class="btn btn-primary">Sign Up Now!</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
+    <!-- /.row -->
 
 </div>
 <!-- /.container -->
-
