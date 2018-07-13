@@ -30,12 +30,14 @@ body {
 }
 
 #game_container > div {
+    margin: auto;
     width: 10000px;
     height: 120px;
     white-space: nowrap;
 }
 
 #controls {
+    margin: auto;
     padding: 15px;
 }
 
