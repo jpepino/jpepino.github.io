@@ -15,23 +15,6 @@
 
     stave.setContext(context).draw();
 
-    var notes = [
-        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" })
-    ];
-
-    // Create a voice in 4/4 and add above notes
-    var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-    voice.addTickables(notes);
-
-    // Format and justify the notes to 400 pixels.
-    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-
-    // Render voice
-    voice.draw(context, stave);
-
 </script>
 
 <div class="container">
@@ -59,7 +42,7 @@
             <div id="graphic"></div>
             <hr>
 
-            <p>Mary Had a Little Lamb</p>
+            <p>Middle C and D</p>
 
             <p>A <b>staff</b>, in music, is a set of five horizontal lines and the four open spaces in between the
                 lines. Each of these lines and open spaces represents a different musical <b>pitch</b>. In music,
@@ -73,8 +56,8 @@
 
             <hr>
 
-            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial2-4">Next</a>
-            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial2-2">Previous</a>
+            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial2-6">Next</a>
+            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial2-4">Previous</a>
 
 
         </div>
