@@ -88,7 +88,7 @@
 
     // Add a note to the staff from the notes array (if there are any left).
     function addNote() {
-        note = notes.shift();
+        note = notes[Math.floor(Math.random() * notes.length)];
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -234,7 +234,7 @@
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
-            <p>TESTER 1923</p>
+            <p>TESTER 1926</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial_item">Begin Tutorial</a>
