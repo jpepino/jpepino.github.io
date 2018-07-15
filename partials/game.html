@@ -114,6 +114,10 @@
         }, 5000);
     }
 
+    function startGame() {
+        var int = setInterval(addNote, 3000);
+    }
+
     // If a user plays/identifies the note in time, send it up to note heaven.
     document.getElementById('right-answer').addEventListener('click', (e) => {
         group = visibleNoteGroups.shift();
@@ -207,6 +211,7 @@
             <div id="controls">
                 <button id='add-note' onclick="addNote()">Add Note</button>
                 <button id='right-answer'>Right Answer</button>
+                <button id='start' onclick="startGame()">Start Game</button>
             </div>
         </div>
         <!-- /.row -->
@@ -223,7 +228,7 @@
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
-            <p>TESTER 1902</p>
+            <p>TESTER 1907</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial_item">Begin Tutorial</a>
