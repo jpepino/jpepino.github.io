@@ -147,6 +147,10 @@
         group.style.transform = `translate(${x}px, -800px)`;
     })
 
+    window.onbeforeunload = function () {
+            stopGame();
+    };
+
 </script>
 
 <div id="myCarousel" class="carousel slide">
