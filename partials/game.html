@@ -34,13 +34,14 @@ stave.setContext(context).draw();
 var durations = ['8', '4', '2', '1'];
 
 var notes = [
-['c', '#', '4'],
-['e', 'b', '5'],
-['g', '', '5'],
-['d', 'b', '4'],
-['b', 'bb', '3'],
-['a', 'b', '4'],
-['f', 'b', '5'],
+['c', '', '4'],
+['d', '', '4'],
+['e', '', '4'],
+['f', '', '4'],
+['g', '', '4'],
+['a', '', '4'],
+['b', '', '4'],
+['c', '', '5']
 ].map(([letter, acc, octave]) => {
 const note = new VF.StaveNote({
 clef: 'treble',
