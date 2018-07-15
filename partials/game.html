@@ -7,7 +7,8 @@
     var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
     // Configure the rendering context.
-    renderer.resize(500, 500);
+    renderer.resize(1000, 500);
+    renderer.ctx.setViewBox(0, 0, 500, 250);
     var context = renderer.getContext();
 
     // A tickContext is required to draw anything that would be placed
@@ -233,7 +234,7 @@
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
-            <p>TESTER 1917</p>
+            <p>TESTER 1920</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial_item">Begin Tutorial</a>
