@@ -13,6 +13,7 @@
     var stave = new VF.Stave(0, 0, 500);
     var stave2 = new VF.Stave(0, 100, 500);
     var stave3 = new VF.Stave(0, 200, 500);
+    var stave4 = new VF.Stave(0, 200, 500);
 
     stave.addClef("treble").addTimeSignature("4/4");
     stave.setContext(context).draw();
@@ -56,7 +57,7 @@
         new Vex.Flow.BarNote(),
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
         new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "h" }),
+        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }),
         new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
         new Vex.Flow.BarNote(),
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" })
@@ -66,6 +67,25 @@
     voice3.addTickables(notes3);
     var formatter3 = new VF.Formatter().joinVoices([voice3]).format([voice3], 400);
     voice3.draw(context, stave3);
+
+    stave4.addClef("treble");
+    stave4.setContext(context).draw();
+    var notes4 = [
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "h" }),
+        new Vex.Flow.BarNote(),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new Vex.Flow.BarNote(),
+        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "w" })
+    ];
+    var voice4 = new VF.Voice({num_beats: 4,  beat_value: 4});
+    voice4.setStrict(false);
+    voice4.addTickables(notes4);
+    var formatter4 = new VF.Formatter().joinVoices([voice4]).format([voice4], 400);
+    voice4.draw(context, stave4);
 
 </script>
 
