@@ -12,6 +12,7 @@
 
     var stave = new VF.Stave(0, 0, 500);
     var stave2 = new VF.Stave(0, 100, 500);
+    var stave3 = new VF.Stave(0, 200, 500);
 
     stave.addClef("treble").addTimeSignature("4/4");
     stave.setContext(context).draw();
@@ -33,10 +34,11 @@
     stave2.addClef("treble").addTimeSignature("4/4");
     stave2.setContext(context).draw();
     var notes2 = [
-        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "h" }),
+        new Vex.Flow.BarNote(),
         new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }),
         new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "h" }),
         new Vex.Flow.BarNote(),
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" })
@@ -46,6 +48,24 @@
     voice2.addTickables(notes2);
     var formatter2 = new VF.Formatter().joinVoices([voice2]).format([voice2], 400);
     voice2.draw(context, stave2);
+
+    stave3.addClef("treble").addTimeSignature("4/4");
+    stave3.setContext(context).draw();
+    var notes3 = [
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "h" }),
+        new Vex.Flow.BarNote(),
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "h" }),
+        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new Vex.Flow.BarNote(),
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" })
+    ];
+    var voice3 = new VF.Voice({num_beats: 4,  beat_value: 4});
+    voice3.setStrict(false);
+    voice3.addTickables(notes2);
+    var formatter3 = new VF.Formatter().joinVoices([voice3]).format([voice3], 400);
+    voice3.draw(context, stave2);
 
 </script>
 
