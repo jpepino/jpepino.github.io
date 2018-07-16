@@ -31,7 +31,7 @@
     var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
     voice.draw(context, stave);
 
-    stave2.addClef("treble").addTimeSignature("4/4");
+    stave2.addClef("treble");
     stave2.setContext(context).draw();
     var notes2 = [
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "h" }),
@@ -49,7 +49,7 @@
     var formatter2 = new VF.Formatter().joinVoices([voice2]).format([voice2], 400);
     voice2.draw(context, stave2);
 
-    stave3.addClef("treble").addTimeSignature("4/4");
+    stave3.addClef("treble");
     stave3.setContext(context).draw();
     var notes3 = [
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "h" }),
@@ -63,9 +63,9 @@
     ];
     var voice3 = new VF.Voice({num_beats: 4,  beat_value: 4});
     voice3.setStrict(false);
-    voice3.addTickables(notes2);
+    voice3.addTickables(notes3);
     var formatter3 = new VF.Formatter().joinVoices([voice3]).format([voice3], 400);
-    voice3.draw(context, stave2);
+    voice3.draw(context, stave3);
 
 </script>
 
