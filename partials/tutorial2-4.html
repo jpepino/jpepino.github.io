@@ -6,12 +6,23 @@
     var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
     renderer.resize(680, 240);
-    renderer.ctx.setViewBox(0, 0, 325, 120);
+    renderer.ctx.setViewBox(0, 0, 500, 120);
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-    var stave = new VF.Stave(10, 0, 320);
+    var stave = new VF.Stave(10, 0, 500);
     stave.addClef("treble").addTimeSignature("4/4");
+
+    var notes = [
+        new VF.StaveNote({clef: "treble", keys: ["b/3"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["c/6"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["g/5"], duration: "q" }),
+    ];
+    var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+    voice.addTickables(notes);
+    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+    voice.draw(context, stave);
 
     stave.setContext(context).draw();
 
@@ -44,14 +55,16 @@
 
             <p>Above and Below the Staff</p>
 
-            <p>A <b>staff</b>, in music, is a set of five horizontal lines and the four open spaces in between the
-                lines. Each of these lines and open spaces represents a different musical <b>pitch</b>. In music,
-                the pitch means how high or low the sound is. Pitches can be represented in notation by musical
-                <b>notes</b>, which serve as the building blocks of written music.</bo></p>
+            <p>We are not limited to writing notes within the five lines and four spaces on a staff. Notes can
+                actually extend above and below the staff, simply by adding as many lines are as needed to represent
+                the note. For example, in the graphic above, we see four notes: two of these are below the staff and
+                two of these are above the staff.
+            </p>
 
-            <p>Notes define two things in music: the pitch, which was mentioned before, and the <b>duration</b>.
-                A musical note can be held out for varying lengths of time, which can be accounted for in musical
-                notation. How to read duration will be covered in a later lesson.
+            <p>These notes are not read differently from the notes on the staff. They progress one pitch lower or higher
+                for every space or line that is passed. Adept music readers will eventually memorize the number of lines
+                that appear below or above a note not on the staff, and whether or not the note falls in a space or on a
+                line.</a>
             </p>
 
             <hr>
