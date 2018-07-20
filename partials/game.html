@@ -152,7 +152,12 @@
     })
 
     function guessNote(guess) {
-        document.getElementById("debug").innerHTML = "The guess is: " + guess;
+        if(guess == visibleNotes[0]){
+            document.getElementById("debug").innerHTML = "CORRECT";
+        }
+        else if(guess != visibleNotes[0]){
+            document.getElementById("debug").innerHTML = "WRONG!";
+        }
     }
 
     function printNoteArray() {
@@ -281,7 +286,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1738</p>
+            <p>Tester 1744</p>
             <p id="debug">DEBUG TEXT</p>
             <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
