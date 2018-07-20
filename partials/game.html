@@ -32,8 +32,6 @@
     // Connect it to the rendering context and draw!
     stave.setContext(context).draw();
 
-    const currentNotes = [];
-
     var durations = ['8', '4', '2', '1'];
 
     var notes = [
@@ -90,9 +88,7 @@
 
     // Add a note to the staff from the notes array (if there are any left).
     function addNote() {
-        var randVal = Math.floor(Math.random() * notes.length);
-        note = notes[randVal];
-        currentNotes.add(randVal);
+        note = notes[Math.floor(Math.random() * notes.length)];
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -257,7 +253,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1724</p>
+            <p>Tester 1727</p>
             <p id="debug">DEBUG TEXT</p>
             <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
