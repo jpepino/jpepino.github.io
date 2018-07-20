@@ -151,31 +151,35 @@
         alert("The note played is: " + guess);
     }
 
-    document.onkeydown = checkKey;
-    function checkKey(e) {
-        e = e || window.event;
-        if (e.keyCode == '65') {
-            guessNote('a');
+    var input = document.getElementById("myInput");
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 65) {
+            document.getElementById("playA").click();
         }
-        else if (e.keyCode == '66') {
-            guessNote('b');
+        if (event.keyCode === 66) {
+            document.getElementById("playB").click();
         }
-        else if (e.keyCode == '67') {
-            guessNote('c');
+        if (event.keyCode === 67) {
+            document.getElementById("playC").click();
         }
-        else if (e.keyCode == '68') {
-            guessNote('d');
+        if (event.keyCode === 68) {
+            document.getElementById("playD").click();
         }
-        else if (e.keyCode == '69') {
-            guessNote('e');
+        if (event.keyCode === 69) {
+            document.getElementById("playE").click();
         }
-        else if (e.keyCode == '70') {
-            guessNote('f');
+        if (event.keyCode === 70) {
+            document.getElementById("playF").click();
         }
-        else if (e.keyCode == '71') {
-            guessNote('g');
+        if (event.keyCode === 71) {
+            document.getElementById("playG").click();
         }
-    }
+    }); 
 
     window.onbeforeunload = function () {
             stopGame();
@@ -252,6 +256,7 @@
             <div id="controls">
                 <button id='start' onclick="startGame()">Start Game</button>
                 <button id='stop' onclick="stopGame()" disabled>Stop Game</button>
+                <input id="myInput" onfocus="this.value=''" value="Enter notes here">
                 <button id='playA' onclick="guessNote('a')">A</button>
                 <button id='playB' onclick="guessNote('b')">B</button>
                 <button id='playC' onclick="guessNote('c')">C</button>
@@ -274,7 +279,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1635</p>
+            <p>Tester 1644</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
