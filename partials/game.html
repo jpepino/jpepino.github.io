@@ -151,6 +151,32 @@
         alert("The note played is: " + guess);
     }
 
+    document.onkeydown = checkKey;
+    function checkKey(e) {
+        e = e || window.event;
+        if (e.keyCode == '65') {
+            guessNote('a');
+        }
+        else if (e.keyCode == '66') {
+            guessNote('b');
+        }
+        else if (e.keyCode == '67') {
+            guessNote('c');
+        }
+        else if (e.keyCode == '68') {
+            guessNote('d');
+        }
+        else if (e.keyCode == '69') {
+            guessNote('e');
+        }
+        else if (e.keyCode == '70') {
+            guessNote('f');
+        }
+        else if (e.keyCode == '71') {
+            guessNote('g');
+        }
+    }
+
     window.onbeforeunload = function () {
             stopGame();
     };
@@ -248,7 +274,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1628</p>
+            <p>Tester 1635</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
