@@ -32,6 +32,8 @@
     // Connect it to the rendering context and draw!
     stave.setContext(context).draw();
 
+    const currentNotes = [];
+
     var durations = ['8', '4', '2', '1'];
 
     var notes = [
@@ -63,6 +65,7 @@
         // what the natural symbol means.)
         if (acc) note.addAccidental(0, new VF.Accidental(acc));
         tickContext.addTickable(note)
+        currentNotes.add(note.letter);
         return note;
     });
 
@@ -151,9 +154,8 @@
         document.getElementById("debug").innerHTML = "The guess is: " + guess;
     }
 
-    function lastNote() {
-        var note = visibleNoteGroups[0];
-        document.getElementById("debug").innerHTML = "The note is: " + note;
+    function printNoteArray() {
+        document.getElementById("current").innerHTML = "NOTE ARRAY: " + currentNotes.toString();
     }
 
     window.onbeforeunload = function () {
@@ -238,7 +240,7 @@
                 <button id='playE' onclick="guessNote('e')">E</button>
                 <button id='playF' onclick="guessNote('f')">F</button>
                 <button id='playG' onclick="guessNote('g')">G</button>
-                <button id='lastNote' onclick="lastNote()">Last Note</button>
+                <button id='printNotes' onclick="printNoteArray()">Print Note Array</button>
             </div>
         </div>
         <!-- /.row -->
@@ -256,6 +258,7 @@
             <h4>Start learning how to read music now!</h4>
             <p>Tester 1703</p>
             <p id="debug">DEBUG TEXT</p>
+            <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
