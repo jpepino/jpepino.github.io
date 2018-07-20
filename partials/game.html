@@ -152,31 +152,30 @@
     }
 
     var input = document.getElementById("myInput");
-
     // Execute a function when the user releases a key on the keyboard
-    input.addEventListener("keyup", function (event) {
+    input.addEventListener("keydown", function (event) {
         // Cancel the default action, if needed
         event.preventDefault();
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 65) {
             document.getElementById("playA").click();
         }
-        if (event.keyCode === 66) {
+        else if (event.keyCode === 66) {
             document.getElementById("playB").click();
         }
-        if (event.keyCode === 67) {
+        else if (event.keyCode === 67) {
             document.getElementById("playC").click();
         }
-        if (event.keyCode === 68) {
+        else if (event.keyCode === 68) {
             document.getElementById("playD").click();
         }
-        if (event.keyCode === 69) {
+        else if (event.keyCode === 69) {
             document.getElementById("playE").click();
         }
-        if (event.keyCode === 70) {
+        else if (event.keyCode === 70) {
             document.getElementById("playF").click();
         }
-        if (event.keyCode === 71) {
+        else if (event.keyCode === 71) {
             document.getElementById("playG").click();
         }
     }); 
@@ -279,7 +278,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1644</p>
+            <p>Tester 1648</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
