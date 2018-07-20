@@ -85,10 +85,12 @@
     // the staff when a user fails to answer them correctly in time.
     // TODO: Add sound effects.
     const visibleNoteGroups = [];
+    const visibleNotes = [];
 
     // Add a note to the staff from the notes array (if there are any left).
     function addNote() {
-        note = notes[Math.floor(Math.random() * notes.length)];
+        var randVal = Math.floor(Math.random() * notes.length);
+        note = notes[randVal];
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -253,7 +255,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1727</p>
+            <p>Tester 1729</p>
             <p id="debug">DEBUG TEXT</p>
             <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
