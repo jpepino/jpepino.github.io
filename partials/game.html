@@ -161,6 +161,11 @@
         }
         else if(guess != visibleNotes[0]){
             document.getElementById("debug").innerHTML = "WRONG!";
+            group = visibleNoteGroups.shift();
+            group.classList.add('correct');
+            const transformMatrix = window.getComputedStyle(group).transform;
+            const x = transformMatrix.split(',')[4].trim();
+            group.style.transform = `translate(${x}px, -800px)`;
         }
         visibleNotes.shift();
     }
@@ -291,7 +296,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1747</p>
+            <p>Tester 1749</p>
             <p id="debug">DEBUG TEXT</p>
             <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
