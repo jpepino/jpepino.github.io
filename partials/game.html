@@ -151,6 +151,11 @@
         document.getElementById("debug").innerHTML = "The guess is: " + guess;
     }
 
+    function lastNote() {
+
+        document.getElementById("debug").innerHTML = "The note is: " + note;
+    }
+
     window.onbeforeunload = function () {
             stopGame();
     };
@@ -233,6 +238,7 @@
                 <button id='playE' onclick="guessNote('e')">E</button>
                 <button id='playF' onclick="guessNote('f')">F</button>
                 <button id='playG' onclick="guessNote('g')">G</button>
+                <button id='lastNote' onclick="lastNote()">Last Note</button>
             </div>
         </div>
         <!-- /.row -->
