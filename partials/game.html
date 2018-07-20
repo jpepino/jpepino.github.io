@@ -162,10 +162,7 @@
         else if(guess != visibleNotes[0]){
             document.getElementById("debug").innerHTML = "WRONG!";
             group = visibleNoteGroups.shift();
-            group.classList.add('correct');
-            const transformMatrix = window.getComputedStyle(group).transform;
-            const x = transformMatrix.split(',')[4].trim();
-            group.style.transform = `translate(${x}px, -800px)`;
+            group.classList.add('too-slow');
         }
         visibleNotes.shift();
     }
