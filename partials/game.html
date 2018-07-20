@@ -155,7 +155,6 @@
 
     function guessNote(guess) {
         if(guess == visibleNotes[0]){
-            document.getElementById("debug").innerHTML = "CORRECT";
             group = visibleNoteGroups.shift();
             group.classList.add('correct');
             const transformMatrix = window.getComputedStyle(group).transform;
@@ -164,7 +163,6 @@
             updateScore(10);
         }
         else if(guess != visibleNotes[0]){
-            document.getElementById("debug").innerHTML = "WRONG!";
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
             updateScore(-10);
