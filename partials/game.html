@@ -91,7 +91,7 @@
     function addNote() {
         var randVal = Math.floor(Math.random() * notes.length);
         note = notes[randVal];
-        visibleNotes.push(randVal);
+        visibleNotes.push(convert(randVal));
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -115,6 +115,7 @@
             if (index === -1) return;
             group.classList.add('too-slow');
             visibleNoteGroups.shift();
+            visibleNotes.shift();
         }, 5000);
     }
 
@@ -156,6 +157,30 @@
 
     function printNoteArray() {
         document.getElementById("current").innerHTML = "NOTE ARRAY: " + visibleNotes.toString();
+    }
+
+    function convert(val) {
+        if(val==0 || val==7){
+            return 'c';
+        }
+        if(val==1){
+            return 'd';
+        }
+        if(val==2){
+            return 'e';
+        }
+        if(val==3){
+            return 'f';
+        }
+        if(val==4){
+            return 'g';
+        }
+        if(val==5){
+            return 'a';
+        }
+        if(val==6){
+            return 'b';
+        }
     }
 
     window.onbeforeunload = function () {
@@ -256,7 +281,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Tester 1731</p>
+            <p>Tester 1738</p>
             <p id="debug">DEBUG TEXT</p>
             <p id="current">NOTE ARRAY: </p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
