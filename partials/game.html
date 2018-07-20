@@ -65,7 +65,6 @@
         // what the natural symbol means.)
         if (acc) note.addAccidental(0, new VF.Accidental(acc));
         tickContext.addTickable(note)
-        currentNotes.add(note.letter);
         return note;
     });
 
@@ -91,7 +90,9 @@
 
     // Add a note to the staff from the notes array (if there are any left).
     function addNote() {
-        note = notes[Math.floor(Math.random() * notes.length)];
+        var randVal = Math.floor(Math.random() * notes.length);
+        note = notes[randVal];
+        currentNotes.add(randVal);
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
