@@ -131,9 +131,13 @@
     }
 
     function stopGame() {
+        visibleNoteGroups.splice(0, visibleNoteGroups.length);
+        visibleNotes.splice(0, visibleNotes.length);
         clearInterval(timer);
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
+        alert("Your final score was: " + score);
+        score = 0;
     }
 
     function playSound(note) {
@@ -304,7 +308,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Update 2308</p>
+            <p>Update 2314</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
