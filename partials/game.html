@@ -123,10 +123,14 @@
     }
 
     var timer;
+    var timer2;
+    var startTime;
 
     function startGame() {
         updateScore(-(score));
+        startTime = new Date();
         timer = setInterval(addNote, 1500);
+        timer2 = setInterval(updateTime, 1000);
         document.getElementById('start').disabled = true;
         document.getElementById('stop').disabled = false;
     }
@@ -138,6 +142,7 @@
             visibleNotes.shift();
         }
         clearInterval(timer);
+        clearInterval(timer2);
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
         alert("Your final score was: " + score);
@@ -176,6 +181,14 @@
     function updateScore(val) {
         score += val;
         document.getElementById("score").innerHTML = "<b>Score: " + score + "</b>";
+    }
+
+    function updateTime() {
+        var currentTime = new Date();
+        var diff = currentTime - startTime;
+        diff /= 1000;
+        var seconds = Math.round(diff);
+        document.getElementById("time").innerHTML = "<b>Time Elapsed: " + seconds + " seconds</b>";
     }
 
     function convert(val) {
@@ -311,7 +324,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>update 2337</p>
+            <p>update 2346</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
