@@ -136,24 +136,13 @@
         document.getElementById('stop').disabled = true;
     }
 
-    // If a user plays/identifies the note in time, send it up to note heaven.
-    document.getElementById('right-answer').addEventListener('click', (e) => {
-        
-        // The note will be somewhere in the middle of its move to the left -- by
-        // getting its computed style we find its x-position, freeze it there, and
-        // then send it straight up to note heaven with no horizontal motion.
-        
-        // transformMatrix will be something like 'matrix(1, 0, 0, 1, -118, 0)'
-        // where, since we're only translating in x, the 4th property will be
-        // the current x-translation. You can dive into the gory details of
-        // CSS3 transform matrices (along with matrix multiplication) if you want
-        // at http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/
-        
-        // And, finally, we set the note's style.transform property to send it skyward.
-        
-    })
+    function playSound(var note) {
+        var audio = document.getElementById("audio");
+        audio.play();
+    }
 
     function guessNote(guess) {
+        playSound(guess);
         if(guess == visibleNotes[0]){
             group = visibleNoteGroups.shift();
             group.classList.add('correct');
@@ -276,14 +265,23 @@
             <div id="controls">
                 <button id='start' onclick="startGame()">Start Game</button>
                 <button id='stop' onclick="stopGame()" disabled>Stop Game</button>
-                <button id='playA' onclick="guessNote('a')">A</button>
-                <button id='playB' onclick="guessNote('b')">B</button>
                 <button id='playC' onclick="guessNote('c')">C</button>
                 <button id='playD' onclick="guessNote('d')">D</button>
                 <button id='playE' onclick="guessNote('e')">E</button>
                 <button id='playF' onclick="guessNote('f')">F</button>
                 <button id='playG' onclick="guessNote('g')">G</button>
+                <button id='playA' onclick="guessNote('a')">A</button>
+                <button id='playB' onclick="guessNote('b')">B</button>
             </div>
+
+            <audio id="audio_c1" src="../39187__jobro__piano-ff-040.wav"></audio>
+            <audio id="audio_d" src="../39189__jobro__piano-ff-042.wav"></audio>
+            <audio id="audio_e" src="../39191__jobro__piano-ff-044.wav"></audio>
+            <audio id="audio_f" src="../39193__jobro__piano-ff-045.wav"></audio>
+            <audio id="audio_g" src="../39195__jobro__piano-ff-047.wav"></audio>
+            <audio id="audio_a" src="../39197__jobro__piano-ff-049.wav"></audio>
+            <audio id="audio_b" src="../39199__jobro__piano-ff-051.wav"></audio>
+            <audio id="audio_c2" src="../39200__jobro__piano-ff-052.wav"></audio>
         </div>
         <!-- /.row -->
 
