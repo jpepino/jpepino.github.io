@@ -128,6 +128,7 @@
 
     function startGame() {
         updateScore(-(score));
+        document.getElementById("time").innerHTML = "<b>Time Elapsed: </b>";
         startTime = new Date();
         timer = setInterval(addNote, 1500);
         timer2 = setInterval(updateTime, 1000);
@@ -325,7 +326,6 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>update 2349</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
