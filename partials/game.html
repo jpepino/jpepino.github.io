@@ -133,7 +133,7 @@
 
     function stopGame() {
         var i;
-        for(i = 0; i < visibleNoteGroups.length; i++){
+        for(i = 0; i <= visibleNoteGroups.length; i++){
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
         }
