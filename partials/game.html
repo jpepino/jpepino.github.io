@@ -134,6 +134,13 @@
         timer2 = setInterval(updateTime, 1000);
         document.getElementById('start').disabled = true;
         document.getElementById('stop').disabled = false;
+        document.getElementById('button_c').disabled = false;
+        document.getElementById('button_d').disabled = false;
+        document.getElementById('button_e').disabled = false;
+        document.getElementById('button_f').disabled = false;
+        document.getElementById('button_g').disabled = false;
+        document.getElementById('button_a').disabled = false;
+        document.getElementById('button_b').disabled = false;
     }
 
     function stopGame() {
@@ -146,6 +153,14 @@
         clearInterval(timer2);
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
+        document.getElementById('stop').disabled = true;
+        document.getElementById('button_c').disabled = true;
+        document.getElementById('button_d').disabled = true;
+        document.getElementById('button_e').disabled = true;
+        document.getElementById('button_f').disabled = true;
+        document.getElementById('button_g').disabled = true;
+        document.getElementById('button_a').disabled = true;
+        document.getElementById('button_b').disabled = true;
         alert("Your final score was: " + score);
     }
 
@@ -294,13 +309,13 @@
             <div id="controls">
                 <button id='start' onclick="startGame()">Start Game</button>
                 <button id='stop' onclick="stopGame()" disabled>Stop Game</button>
-                <button id='playC' onclick="guessNote('c')">C</button>
-                <button id='playD' onclick="guessNote('d')">D</button>
-                <button id='playE' onclick="guessNote('e')">E</button>
-                <button id='playF' onclick="guessNote('f')">F</button>
-                <button id='playG' onclick="guessNote('g')">G</button>
-                <button id='playA' onclick="guessNote('a')">A</button>
-                <button id='playB' onclick="guessNote('b')">B</button>
+                <button id='button_c' onclick="guessNote('c')" disabled>C</button>
+                <button id='button_d' onclick="guessNote('d')" disabled>D</button>
+                <button id='button_e' onclick="guessNote('e')" disabled>E</button>
+                <button id='button_f' onclick="guessNote('f')" disabled>F</button>
+                <button id='button_g' onclick="guessNote('g')" disabled>G</button>
+                <button id='button_a' onclick="guessNote('a')" disabled>A</button>
+                <button id='button_b' onclick="guessNote('b')" disabled>B</button>
             </div>
 
             <audio id="audio_0" src="../audio/39187__jobro__piano-ff-040.mp3"></audio>
