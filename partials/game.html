@@ -137,7 +137,8 @@
     }
 
     function playSound(var note) {
-        var audio = document.getElementById("audio");
+        var audioString = "audio_" + note;
+        var audio = document.getElementById(audioString);
         audio.play();
     }
 
@@ -274,7 +275,7 @@
                 <button id='playB' onclick="guessNote('b')">B</button>
             </div>
 
-            <audio id="audio_c1" src="../39187__jobro__piano-ff-040.wav"></audio>
+            <audio id="audio_c" src="../39187__jobro__piano-ff-040.wav"></audio>
             <audio id="audio_d" src="../39189__jobro__piano-ff-042.wav"></audio>
             <audio id="audio_e" src="../39191__jobro__piano-ff-044.wav"></audio>
             <audio id="audio_f" src="../39193__jobro__piano-ff-045.wav"></audio>
