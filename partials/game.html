@@ -231,9 +231,7 @@
         }
     }
 
-    window.onbeforeunload = function () {
-            stopGame();
-    };
+    window.onunload = stopGame;
 
 </script>
 
