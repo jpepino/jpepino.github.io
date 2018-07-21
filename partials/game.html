@@ -93,7 +93,7 @@
     function addNote() {
         var randVal = Math.floor(Math.random() * notes.length);
         note = notes[randVal];
-        visibleNotes.push(convert(randVal));
+        visibleNotes.push(randVal);
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -148,8 +148,8 @@
     }
 
     function guessNote(guess) {
-        if(guess == visibleNotes[0]){
-            playSound(guess);
+        if(guess == convert(visibleNotes[0])){
+            playSound(visibleNotes[0]);
             group = visibleNoteGroups.shift();
             group.classList.add('correct');
             const transformMatrix = window.getComputedStyle(group).transform;
@@ -281,14 +281,14 @@
                 <button id='playB' onclick="guessNote('b')">B</button>
             </div>
 
-            <audio id="audio_c" src="../audio/39187__jobro__piano-ff-040.mp3"></audio>
-            <audio id="audio_d" src="../audio/39189__jobro__piano-ff-042.mp3"></audio>
-            <audio id="audio_e" src="../audio/39191__jobro__piano-ff-044.mp3"></audio>
-            <audio id="audio_f" src="../audio/39193__jobro__piano-ff-045.mp3"></audio>
-            <audio id="audio_g" src="../audio/39195__jobro__piano-ff-047.mp3"></audio>
-            <audio id="audio_a" src="../audio/39197__jobro__piano-ff-049.mp3"></audio>
-            <audio id="audio_b" src="../audio/39199__jobro__piano-ff-051.mp3"></audio>
-            <audio id="audio_c2" src="../audio/39200__jobro__piano-ff-052.mp3"></audio>
+            <audio id="audio_0" src="../audio/39187__jobro__piano-ff-040.mp3"></audio>
+            <audio id="audio_1" src="../audio/39189__jobro__piano-ff-042.mp3"></audio>
+            <audio id="audio_2" src="../audio/39191__jobro__piano-ff-044.mp3"></audio>
+            <audio id="audio_3" src="../audio/39193__jobro__piano-ff-045.mp3"></audio>
+            <audio id="audio_4" src="../audio/39195__jobro__piano-ff-047.mp3"></audio>
+            <audio id="audio_5" src="../audio/39197__jobro__piano-ff-049.mp3"></audio>
+            <audio id="audio_6" src="../audio/39199__jobro__piano-ff-051.mp3"></audio>
+            <audio id="audio_7" src="../audio/39200__jobro__piano-ff-052.mp3"></audio>
             <audio id="wrong" src="../audio/wrong_answer.mp3"></audio>
         </div>
         <!-- /.row -->
@@ -304,7 +304,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Update 2241</p>
+            <p>Update 2308</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
