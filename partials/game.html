@@ -136,14 +136,14 @@
         document.getElementById('stop').disabled = true;
     }
 
-    function playSound(var note) {
+    function playSound(note) {
         var audioString = "audio_" + note;
         var audio = document.getElementById(audioString);
         audio.play();
     }
 
     function guessNote(guess) {
-        //playSound(guess);
+        playSound(guess);
         if(guess == visibleNotes[0]){
             group = visibleNoteGroups.shift();
             group.classList.add('correct');
@@ -297,7 +297,7 @@
     <div class="row well">
         <div class="col-lg-8 col-md-8">
             <h4>Start learning how to read music now!</h4>
-            <p>Update 2224</p>
+            <p>Update 2229</p>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
