@@ -210,7 +210,7 @@
 
         secs = seconds % 60;
         seconds /= 60;
-        mins = seconds % 60;
+        mins = Math.floor(seconds % 60);
 
         if(secs < 10) {
             secs = "0" + secs;
