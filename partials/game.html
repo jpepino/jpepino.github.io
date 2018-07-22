@@ -128,7 +128,7 @@
 
     function startGame() {
         updateScore(-(score));
-        document.getElementById("time").innerHTML = "<b>Time Elapsed: </b>";
+        document.getElementById("time").innerHTML = "0";
         startTime = new Date();
         timer = setInterval(addNote, 1500);
         timer2 = setInterval(updateTime, 1000);
@@ -196,7 +196,7 @@
 
     function updateScore(val) {
         score += val;
-        document.getElementById("score").innerHTML = "<b>Score: " + score + "</b>";
+        document.getElementById("score").innerHTML = score;
     }
 
     function updateTime() {
@@ -204,7 +204,7 @@
         var diff = currentTime - startTime;
         diff /= 1000;
         var seconds = Math.round(diff);
-        document.getElementById("time").innerHTML = "<b>Time Elapsed: " + seconds + " seconds</b>";
+        document.getElementById("time").innerHTML = seconds;
     }
 
     function convert(val) {
@@ -266,7 +266,7 @@
                 <p>Time Elapsed</p>
             </div>
         </div>
-        
+
         <div id="metrics">
             <div id="score_container">
                 <p id="score">
