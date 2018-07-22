@@ -21,6 +21,18 @@ body {
     cursor:pointer;
 }
 
+#score_container {
+    width: 50px;
+    height: 25px;
+    border: 1px solid #000000;
+}
+
+#time_container {
+    width: 50px;
+    height: 25px;
+    border: 1px solid #000000;
+}
+
 #game_container {
     width: 1000px;
     height: 240px;
