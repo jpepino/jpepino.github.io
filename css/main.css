@@ -23,7 +23,7 @@ body {
 
 #labels {
     width: 450px;
-    height: 12px;
+    height: 16px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -31,7 +31,7 @@ body {
 #score_label {
     float: left;
     width: 150px;
-    height: 16px;
+    height: 12px;
     text-align: center;
     font-weight: bold;
 }
