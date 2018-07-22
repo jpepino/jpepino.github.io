@@ -90,8 +90,7 @@ body {
 #controls {
     width: 1000px;
     padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
+    align-content: center;
 }
 
 #controls > button {
