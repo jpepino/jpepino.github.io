@@ -46,10 +46,9 @@ body {
 
 #metrics {
     width: 450px;
-    height: 75px;
+    height: 90px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 16px;
 }
 
 #score_container {
