@@ -204,7 +204,19 @@
         var diff = currentTime - startTime;
         diff /= 1000;
         var seconds = Math.round(diff);
-        document.getElementById("time").innerHTML = seconds;
+
+        var secs;
+        var mins;
+
+        secs = seconds % 60;
+        seconds /= 60;
+        mins = seconds % 60;
+
+        if(secs < 10) {
+            secs = "0" + secs;
+        }
+
+        document.getElementById("time").innerHTML = mins + ":" + secs;
     }
 
     function convert(val) {
@@ -276,7 +288,7 @@
         
             <div id="time_container">
                 <p id="time">
-                    <b>0</b>
+                    <b>0:00</b>
                 </p>
             </div>
         </div>
