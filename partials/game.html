@@ -93,7 +93,7 @@
     function addNote() {
         var randVal = Math.floor(Math.random() * notes.length);
         note = notes[randVal];
-        visibleNotes.push(convert(randVal));
+        visibleNotes.push(randVal);
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -123,38 +123,61 @@
     }
 
     var timer;
+    var timer2;
+    var startTime;
 
     function startGame() {
+        updateScore(-(score));
+        document.getElementById("time").innerHTML = "<b>Time Elapsed: </b>";
+        startTime = new Date();
         timer = setInterval(addNote, 1500);
+        timer2 = setInterval(updateTime, 1000);
         document.getElementById('start').disabled = true;
         document.getElementById('stop').disabled = false;
+        document.getElementById('button_c').disabled = false;
+        document.getElementById('button_d').disabled = false;
+        document.getElementById('button_e').disabled = false;
+        document.getElementById('button_f').disabled = false;
+        document.getElementById('button_g').disabled = false;
+        document.getElementById('button_a').disabled = false;
+        document.getElementById('button_b').disabled = false;
     }
 
     function stopGame() {
+        while(visibleNoteGroups.length != 0){
+            group = visibleNoteGroups.shift();
+            group.classList.add('too-slow');
+            visibleNotes.shift();
+        }
         clearInterval(timer);
+        clearInterval(timer2);
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
+        document.getElementById('stop').disabled = true;
+        document.getElementById('button_c').disabled = true;
+        document.getElementById('button_d').disabled = true;
+        document.getElementById('button_e').disabled = true;
+        document.getElementById('button_f').disabled = true;
+        document.getElementById('button_g').disabled = true;
+        document.getElementById('button_a').disabled = true;
+        document.getElementById('button_b').disabled = true;
+        alert("Your final score was: " + score);
     }
 
-    // If a user plays/identifies the note in time, send it up to note heaven.
-    document.getElementById('right-answer').addEventListener('click', (e) => {
-        
-        // The note will be somewhere in the middle of its move to the left -- by
-        // getting its computed style we find its x-position, freeze it there, and
-        // then send it straight up to note heaven with no horizontal motion.
-        
-        // transformMatrix will be something like 'matrix(1, 0, 0, 1, -118, 0)'
-        // where, since we're only translating in x, the 4th property will be
-        // the current x-translation. You can dive into the gory details of
-        // CSS3 transform matrices (along with matrix multiplication) if you want
-        // at http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/
-        
-        // And, finally, we set the note's style.transform property to send it skyward.
-        
-    })
+    function playSound(note) {
+        if(note == "wrong"){
+            var audioString = "wrong";
+        }
+        else{
+            var audioString = "audio_" + note;
+        }
+        var audio = document.getElementById(audioString);
+        audio.play();
+    }
 
     function guessNote(guess) {
-        if(guess == visibleNotes[0]){
+        if(guess == convert(visibleNotes[0])){
+            playSound(visibleNotes[0]);
             group = visibleNoteGroups.shift();
             group.classList.add('correct');
             const transformMatrix = window.getComputedStyle(group).transform;
@@ -163,6 +186,7 @@
             updateScore(10);
         }
         else if(guess != visibleNotes[0]){
+            playSound("wrong");
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
             updateScore(-10);
@@ -173,6 +197,14 @@
     function updateScore(val) {
         score += val;
         document.getElementById("score").innerHTML = "<b>Score: " + score + "</b>";
+    }
+
+    function updateTime() {
+        var currentTime = new Date();
+        var diff = currentTime - startTime;
+        diff /= 1000;
+        var seconds = Math.round(diff);
+        document.getElementById("time").innerHTML = "<b>Time Elapsed: " + seconds + " seconds</b>";
     }
 
     function convert(val) {
@@ -199,50 +231,9 @@
         }
     }
 
-    window.onbeforeunload = function () {
-            stopGame();
-    };
+    window.onunload = stopGame;
 
 </script>
-
-<div id="myCarousel" class="carousel slide">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <div class="item active">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Specialists');"></div>
-            <div class="carousel-caption">
-                <h1>Reduce costs of finishing operations by 65%</h1>
-            </div>
-        </div>
-        <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Wordlwide');"></div>
-            <div class="carousel-caption">
-                <h1>International Buyer Financing Available</h1>
-            </div>
-        </div>
-        <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Since 1910');"></div>
-            <div class="carousel-caption">
-                <h1>Family Owned for Four Generations</h1>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="icon-prev"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="icon-next"></span>
-    </a>
-</div>
 
 <div class="section-colored text-center">
 
@@ -268,6 +259,7 @@
     <div class="container">
 
         <p id="score"><b>Score: 0</b></p>
+        <p id="time"><b>Time Elapsed: </b></p>
 
         <div class="row">
             <div id="game_container">
@@ -276,14 +268,24 @@
             <div id="controls">
                 <button id='start' onclick="startGame()">Start Game</button>
                 <button id='stop' onclick="stopGame()" disabled>Stop Game</button>
-                <button id='playA' onclick="guessNote('a')">A</button>
-                <button id='playB' onclick="guessNote('b')">B</button>
-                <button id='playC' onclick="guessNote('c')">C</button>
-                <button id='playD' onclick="guessNote('d')">D</button>
-                <button id='playE' onclick="guessNote('e')">E</button>
-                <button id='playF' onclick="guessNote('f')">F</button>
-                <button id='playG' onclick="guessNote('g')">G</button>
+                <button id='button_c' onclick="guessNote('c')" disabled>C</button>
+                <button id='button_d' onclick="guessNote('d')" disabled>D</button>
+                <button id='button_e' onclick="guessNote('e')" disabled>E</button>
+                <button id='button_f' onclick="guessNote('f')" disabled>F</button>
+                <button id='button_g' onclick="guessNote('g')" disabled>G</button>
+                <button id='button_a' onclick="guessNote('a')" disabled>A</button>
+                <button id='button_b' onclick="guessNote('b')" disabled>B</button>
             </div>
+
+            <audio id="audio_0" src="../audio/39187__jobro__piano-ff-040.mp3"></audio>
+            <audio id="audio_1" src="../audio/39189__jobro__piano-ff-042.mp3"></audio>
+            <audio id="audio_2" src="../audio/39191__jobro__piano-ff-044.mp3"></audio>
+            <audio id="audio_3" src="../audio/39193__jobro__piano-ff-045.mp3"></audio>
+            <audio id="audio_4" src="../audio/39195__jobro__piano-ff-047.mp3"></audio>
+            <audio id="audio_5" src="../audio/39197__jobro__piano-ff-049.mp3"></audio>
+            <audio id="audio_6" src="../audio/39199__jobro__piano-ff-051.mp3"></audio>
+            <audio id="audio_7" src="../audio/39200__jobro__piano-ff-052.mp3"></audio>
+            <audio id="wrong" src="../audio/wrong_answer.mp3"></audio>
         </div>
         <!-- /.row -->
 
