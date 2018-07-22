@@ -38,6 +38,8 @@ body {
 
 #controls {
     padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #controls > button {
