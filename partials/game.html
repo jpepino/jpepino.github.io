@@ -128,7 +128,7 @@
 
     function startGame() {
         updateScore(-(score));
-        document.getElementById("time").innerHTML = "0";
+        document.getElementById("time").innerHTML = "0:00";
         startTime = new Date();
         timer = setInterval(addNote, 1500);
         timer2 = setInterval(updateTime, 1000);
