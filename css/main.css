@@ -22,14 +22,14 @@ body {
 }
 
 #score_container {
-    width: 50px;
-    height: 25px;
+    width: 150px;
+    height: 75px;
     border: 1px solid #000000;
 }
 
 #time_container {
-    width: 50px;
-    height: 25px;
+    width: 150px;
+    height: 75px;
     border: 1px solid #000000;
 }
 
