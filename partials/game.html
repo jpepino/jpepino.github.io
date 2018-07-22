@@ -196,7 +196,19 @@
 
     function updateScore(val) {
         score += val;
-        document.getElementById("score").innerHTML = score;
+        if(score<0){
+            document.getElementById("score_container").style.color = "red";
+            document.getElementById("score").innerHTML = score;
+        }
+        else if(score>0) {
+            document.getElementById("score_container").style.color = "green";
+            document.getElementById("score").innerHTML = score;
+        }
+        else {
+            document.getElementById("score_container").style.color = "black";
+            document.getElementById("score").innerHTML = score;
+        }
+        
     }
 
     function updateTime() {
