@@ -21,9 +21,32 @@ body {
     cursor:pointer;
 }
 
+#labels {
+    width: 450px;
+    height: 12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#score_label {
+    float: left;
+    width: 150px;
+    height: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#time_label {
+    float: right;
+    width: 150px;
+    height: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
 #metrics {
     width: 450px;
-    height: 87px;
+    height: 75px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -40,20 +63,6 @@ body {
     width: 150px;
     height: 75px;
     border: 1px solid #000000;
-}
-
-#score_label {
-    float: left;
-    width: 150px;
-    height: 12px;
-    text-align: center;
-}
-
-#time_label {
-    float: right;
-    width: 150px;
-    height: 12px;
-    text-align: center;
 }
 
 #game_container {
