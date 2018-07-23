@@ -18,7 +18,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
     // Tutorial
     .when("/tutorial", {templateUrl: "partials/tutorial.html", controller: "BlogCtrl"})
-    .when("/tutorial_item", {templateUrl: "partials/tutorial_item.html", controller: "BlogCtrl"})
     .when("/tutorial1-1", {templateUrl: "partials/tutorial1-1.html", controller: "BlogCtrl"})
     .when("/tutorial1-2", {templateUrl: "partials/tutorial1-2.html", controller: "BlogCtrl"})
     .when("/tutorial1-3", {templateUrl: "partials/tutorial1-3.html", controller: "BlogCtrl"})
