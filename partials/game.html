@@ -239,20 +239,6 @@
     }
 
     function toggleButtonsGameActive() {
-        document.getElementById('start').disabled = true;
-        document.getElementById('stop').disabled = false;
-        document.getElementById('speedUp').disabled = false;
-        document.getElementById('speedDown').disabled = false;
-        document.getElementById('button_c').disabled = false;
-        document.getElementById('button_d').disabled = false;
-        document.getElementById('button_e').disabled = false;
-        document.getElementById('button_f').disabled = false;
-        document.getElementById('button_g').disabled = false;
-        document.getElementById('button_a').disabled = false;
-        document.getElementById('button_b').disabled = false;
-    }
-
-    function toggleButtonsGameInactive() {
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
         document.getElementById('speedUp').disabled = true;
@@ -264,6 +250,20 @@
         document.getElementById('button_g').disabled = true;
         document.getElementById('button_a').disabled = true;
         document.getElementById('button_b').disabled = true;
+    }
+
+    function toggleButtonsGameInactive() {
+        document.getElementById('start').disabled = true;
+        document.getElementById('stop').disabled = false;
+        document.getElementById('speedUp').disabled = false;
+        document.getElementById('speedDown').disabled = false;
+        document.getElementById('button_c').disabled = false;
+        document.getElementById('button_d').disabled = false;
+        document.getElementById('button_e').disabled = false;
+        document.getElementById('button_f').disabled = false;
+        document.getElementById('button_g').disabled = false;
+        document.getElementById('button_a').disabled = false;
+        document.getElementById('button_b').disabled = false;
     }
 
     function uncheckOthers(num) {
