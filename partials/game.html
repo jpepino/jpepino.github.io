@@ -165,9 +165,11 @@
         }
         else if(document.getElementById("song_mary_had").checked){
             var notes = [4, 3, 2, 3, 4, 4, 4];
-            var i = 0;
-            timer = setInterval(addNote(notes[i++]), speed);
-            alert("playing mary had a little lamb");
+            var i;
+            for(i = 0; i < notes.length; i++){
+                setTimeout(addNote(notes[i], speed));
+            }
+            stopGame();
         }
         else{
             clearInterval(timer2);
