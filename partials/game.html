@@ -165,11 +165,15 @@
         }
         else if(document.getElementById("song_mary_had").checked){
             var notes = [4, 3, 2, 3, 4, 4, 4];
-            var i;
-            for(i = 0; i < notes.length; i++){
-                setTimeout(addNote(notes[i], speed));
+            var i = notes.length;
+            playSong(i);
+            function playSong(i) {
+                if (i < 0) stopGame();
+                setTimeout(function () {
+                    addNote(i - notes.length);
+                    playSong(--i);
+                }, speed);
             }
-            stopGame();
         }
         else{
             clearInterval(timer2);
