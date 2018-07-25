@@ -89,11 +89,32 @@
 
     var score = 0;
 
-    // Add a note to the staff from the notes array (if there are any left).
+    // Add a random note to the staff from the notes array
     function addRandomNote() {
         var randVal = Math.floor(Math.random() * notes.length);
         note = notes[randVal];
         visibleNotes.push(randVal);
+        if (!note) return;
+        const group = context.openGroup();
+        visibleNoteGroups.push(group);
+        note.draw();
+        context.closeGroup();
+        group.classList.add('scroll');
+        const box = group.getBoundingClientRect();
+        group.classList.add('scrolling');
+        window.setTimeout(() => {
+            const index = visibleNoteGroups.indexOf(group);
+            if (index === -1) return;
+            group.classList.add('too-slow');
+            visibleNoteGroups.shift();
+            visibleNotes.shift();
+            updateScore(-10);
+        }, 5000);
+    }
+
+    function addNote(noteVal) {
+        note = notes[noteVal];
+        visibleNotes.push(noteVal);
         if (!note) return;
         const group = context.openGroup();
         visibleNoteGroups.push(group);
@@ -143,6 +164,9 @@
             timer = setInterval(addRandomNote, speed);
         }
         else if(document.getElementById("song_mary_had").checked){
+            var notes = [4, 3, 2, 3, 4, 4, 4];
+            var i = 0;
+            timer = setInterval(addNote(notes[i++]), speed);
             alert("playing mary had a little lamb");
         }
         else{
