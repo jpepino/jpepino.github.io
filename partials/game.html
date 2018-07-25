@@ -123,17 +123,7 @@
         startTime = new Date();
         chooseSong();
         timer2 = setInterval(updateTime, 1000);
-        document.getElementById('start').disabled = true;
-        document.getElementById('stop').disabled = false;
-        document.getElementById('speedUp').disabled = false;
-        document.getElementById('speedDown').disabled = false;
-        document.getElementById('button_c').disabled = false;
-        document.getElementById('button_d').disabled = false;
-        document.getElementById('button_e').disabled = false;
-        document.getElementById('button_f').disabled = false;
-        document.getElementById('button_g').disabled = false;
-        document.getElementById('button_a').disabled = false;
-        document.getElementById('button_b').disabled = false;
+        toggleButtonsGameActive();
     }
 
     function stopGame() {
@@ -144,17 +134,7 @@
         }
         clearInterval(timer);
         clearInterval(timer2);
-        document.getElementById('start').disabled = false;
-        document.getElementById('stop').disabled = true;
-        document.getElementById('speedUp').disabled = true;
-        document.getElementById('speedDown').disabled = true;
-        document.getElementById('button_c').disabled = true;
-        document.getElementById('button_d').disabled = true;
-        document.getElementById('button_e').disabled = true;
-        document.getElementById('button_f').disabled = true;
-        document.getElementById('button_g').disabled = true;
-        document.getElementById('button_a').disabled = true;
-        document.getElementById('button_b').disabled = true;
+        toggleButtonsGameInactive();
         alert("Your final score was: " + score);
     }
 
@@ -256,6 +236,34 @@
         if(val==6){
             return 'b';
         }
+    }
+
+    function toggleButtonsGameActive() {
+        document.getElementById('start').disabled = true;
+        document.getElementById('stop').disabled = false;
+        document.getElementById('speedUp').disabled = false;
+        document.getElementById('speedDown').disabled = false;
+        document.getElementById('button_c').disabled = false;
+        document.getElementById('button_d').disabled = false;
+        document.getElementById('button_e').disabled = false;
+        document.getElementById('button_f').disabled = false;
+        document.getElementById('button_g').disabled = false;
+        document.getElementById('button_a').disabled = false;
+        document.getElementById('button_b').disabled = false;
+    }
+
+    function toggleButtonsGameInactive() {
+        document.getElementById('start').disabled = false;
+        document.getElementById('stop').disabled = true;
+        document.getElementById('speedUp').disabled = true;
+        document.getElementById('speedDown').disabled = true;
+        document.getElementById('button_c').disabled = true;
+        document.getElementById('button_d').disabled = true;
+        document.getElementById('button_e').disabled = true;
+        document.getElementById('button_f').disabled = true;
+        document.getElementById('button_g').disabled = true;
+        document.getElementById('button_a').disabled = true;
+        document.getElementById('button_b').disabled = true;
     }
 
     window.onunload = stopGame;
