@@ -121,9 +121,9 @@
         updateScore(-(score));
         document.getElementById("time").innerHTML = "0:00";
         startTime = new Date();
-        chooseSong();
         timer2 = setInterval(updateTime, 1000);
         toggleButtonsGameActive();
+        chooseSong();
     }
 
     function stopGame() {
