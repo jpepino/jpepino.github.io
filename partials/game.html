@@ -146,6 +146,8 @@
             alert("playing mary had a little lamb");
         }
         else{
+            clearInterval(timer2);
+            toggleButtonsGameInactive();
             alert("Please select a song from the Song Library!");
         }
     }
@@ -251,6 +253,9 @@
         document.getElementById('button_g').disabled = true;
         document.getElementById('button_a').disabled = true;
         document.getElementById('button_b').disabled = true;
+        document.getElementById('song_random_notes').disabled = true;
+        document.getElementById('song_mary_had').disabled = true;
+
     }
 
     function toggleButtonsGameActive() {
@@ -263,6 +268,8 @@
         document.getElementById('button_g').disabled = false;
         document.getElementById('button_a').disabled = false;
         document.getElementById('button_b').disabled = false;
+        document.getElementById('song_random_notes').disabled = false;
+        document.getElementById('song_mary_had').disabled = false;
     }
 
     function uncheckOthers(num) {
@@ -367,10 +374,9 @@
                 <input type="radio" onclick="uncheckOthers(1)" id="song_random_notes">Random Notes<br>
                 <input type="radio" onclick="uncheckOthers(2)" id="song_mary_had">Mary Had a Little Lamb
             </form>
-            <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
         <div class="col-lg-4 col-md-4">
-            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Begin Tutorial</a>
+            <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a>
         </div>
     </div>
     <!-- /.row -->
