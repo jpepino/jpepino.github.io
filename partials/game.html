@@ -125,15 +125,18 @@
     var timer;
     var timer2;
     var startTime;
+    var speed = 1500;
 
     function startGame() {
         updateScore(-(score));
         document.getElementById("time").innerHTML = "0:00";
         startTime = new Date();
-        timer = setInterval(addNote, 1500);
+        timer = setInterval(addNote, speed);
         timer2 = setInterval(updateTime, 1000);
         document.getElementById('start').disabled = true;
         document.getElementById('stop').disabled = false;
+        document.getElementById('speedUp').disabled = false;
+        document.getElementById('speedDown').disabled = false;
         document.getElementById('button_c').disabled = false;
         document.getElementById('button_d').disabled = false;
         document.getElementById('button_e').disabled = false;
@@ -153,7 +156,8 @@
         clearInterval(timer2);
         document.getElementById('start').disabled = false;
         document.getElementById('stop').disabled = true;
-        document.getElementById('stop').disabled = true;
+        document.getElementById('speedUp').disabled = true;
+        document.getElementById('speedDown').disabled = true;
         document.getElementById('button_c').disabled = true;
         document.getElementById('button_d').disabled = true;
         document.getElementById('button_e').disabled = true;
@@ -229,6 +233,10 @@
         }
 
         document.getElementById("time").innerHTML = mins + ":" + secs;
+    }
+
+    function updateSpeed(interval){
+        timer = setInterval(addNote, speed + interval);
     }
 
     function convert(val) {
@@ -312,6 +320,8 @@
             <div id="controls">
                 <button id='start' onclick="startGame()">Start Game</button>
                 <button id='stop' onclick="stopGame()" disabled>Stop Game</button>
+                <button id='speedUp' onclick="updateSpeed(500)" disabled>Speed Up</button>
+                <button id='speedDown' onclick="updateSpeed(-500)" disabled>Speed Down</button>
                 <button id='button_c' onclick="guessNote('c')" disabled>C</button>
                 <button id='button_d' onclick="guessNote('d')" disabled>D</button>
                 <button id='button_e' onclick="guessNote('e')" disabled>E</button>
