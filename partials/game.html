@@ -142,8 +142,11 @@
         if(document.getElementById("song_random_notes").checked){
             timer = setInterval(addRandomNote, speed);
         }
+        else if(document.getElementById("song_random_notes").checked){
+            alert("playing mary had a little lamb");
+        }
         else{
-            alert("nothing can be done!");
+            alert("Please select a song from the Song Library!");
         }
     }
 
