@@ -78,7 +78,7 @@
     //
     // tickContext.setX() establishes the left-most x position for all
     // of the 'tickables' (notes, etc...) in a context.
-    tickContext.preFormat().setX(500);
+    tickContext.preFormat().setX(400);
 
     // This will contain any notes that are currently visible on the staff,
     // before they've either been answered correctly, or plumetted off
@@ -119,7 +119,7 @@
             visibleNoteGroups.shift();
             visibleNotes.shift();
             updateScore(-10);
-        }, 6000);
+        }, 5000);
     }
 
     var timer;
