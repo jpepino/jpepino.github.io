@@ -170,7 +170,7 @@
             function playSong(i) {
                 if (i < 0) stopGame();
                 setTimeout(function () {
-                    addNote(i - notes.length);
+                    addNote(notes[notes.length - i]);
                     playSong(--i);
                 }, speed);
             }
