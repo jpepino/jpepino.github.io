@@ -266,6 +266,15 @@
         document.getElementById('button_b').disabled = true;
     }
 
+    function uncheckOthers(num) {
+        if(num==1){
+            document.getElementById("song_mary_had").checked = false;
+        }
+        if(num==2){
+            document.getElementById("song_random_numbers").checked = false;
+        }
+    }
+
     window.onunload = stopGame;
 
 </script>
@@ -356,8 +365,8 @@
         <div class="col-lg-8 col-md-8">
             <h4>Song Library</h4>
             <form>
-                <input type="radio" id="song_random_notes">Random Notes<br>
-                <input type="radio" id="song_mary_had">Mary Had a Little Lamb
+                <input type="radio" onclick="uncheckOthers(1)" id="song_random_notes">Random Notes<br>
+                <input type="radio" onclick="uncheckOthers(2)" id="song_mary_had">Mary Had a Little Lamb
             </form>
             <p>Progress through SightReader's tutorial sections and learn the basics of sight-reading music!</p>
         </div>
