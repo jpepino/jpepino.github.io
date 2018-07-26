@@ -5,8 +5,8 @@
     var div = document.getElementById("graphic")
     var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
-    renderer.resize(600, 600);
-    renderer.ctx.setViewBox(0, 0, 400, 400);
+    renderer.resize(680, 240);
+    renderer.ctx.setViewBox(0, 0, 325, 120);
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -17,30 +17,19 @@
 
     var notes = [
         new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" })
     ];
+
+    // Create a voice in 4/4 and add above notes
     var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
     voice.setStrict(false);
     voice.addTickables(notes);
-    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-    voice.draw(context, stave);
 
-    stave2.addClef("treble");
-    stave2.setContext(context).draw();
-    var notes2 = [
-        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
-        new Vex.Flow.BarNote(),
-        new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "q" }),
-        new VF.StaveNote({clef: "treble", keys: ["c/5"], duration: "q" }),
-    ];
-    var voice2 = new VF.Voice({num_beats: 4,  beat_value: 4});
-    voice2.setStrict(false);
-    voice2.addTickables(notes2);
-    var formatter2 = new VF.Formatter().joinVoices([voice2]).format([voice2], 400);
-    voice2.draw(context, stave2);
+    // Format and justify the notes to 400 pixels.
+    var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+
+    // Render voice
+    voice.draw(context, stave);
 
 </script>
 
