@@ -157,6 +157,8 @@
         while(visibleNoteGroups.length != 0){
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
+        }
+        while(visibleNotes.length != 0){
             visibleNotes.shift();
         }
         if(document.getElementById("song_random_notes").checked){
@@ -167,6 +169,7 @@
         }
         clearInterval(timer2);
         toggleButtonsGameInactive();
+
         alert("Your final score was: " + score);
     }
 
