@@ -282,8 +282,6 @@
 
     function updateAccuracy(){
         accuracy = (hitCount / (hitCount+missCount)) * 100;
-        document.getElementById("hits").innerHTML = "Hits: " + hitCount;
-        document.getElementById("misses").innerHTML = "Misses: " + missCount;
         document.getElementById("accuracy").innerHTML = Math.round(accuracy*100)/100 + "%";
     }
 
@@ -512,6 +510,7 @@
                 <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
+            <p>update 1459</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
