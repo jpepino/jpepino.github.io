@@ -149,7 +149,7 @@
         }
         else{
             var noteArray = createNoteArray();
-            playSong(noteArray);
+            playSong(noteArray, noteArray.length);
         }
     }
 
@@ -182,12 +182,11 @@
         }
     }
 
-    function playSong(notes) {
-        var i = notes.length;
+    function playSong(notes, i) {
         if (i < 0) stopGame();
         setTimeout(function () {
             addNote(notes[notes.length - i]);
-            playSong(--i);
+            playSong(notes, --i);
         }, speed);
     }
 
