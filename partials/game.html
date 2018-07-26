@@ -136,7 +136,7 @@
     var timer;
     var timer2;
     var startTime;
-    var speed = 1500;
+    var speed = 1000;
 
     function startGame() {
         updateScore(-(score));
@@ -203,8 +203,7 @@
             var audioString = "audio_" + note;
         }
         var audio = document.getElementById(audioString);
-        audio.pause();
-        audio.currentTime = 0;
+        audio.stop();
         audio.play();
     }
 
