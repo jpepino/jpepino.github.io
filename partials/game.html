@@ -32,7 +32,7 @@
     // Connect it to the rendering context and draw!
     stave.setContext(context).draw();
 
-    var durations = ['8', '4', '2', '1'];
+    var durations = ['1'];
 
     var notes = [
         ['c', '', '4'],
@@ -144,7 +144,13 @@
         startTime = new Date();
         timer2 = setInterval(updateTime, 1000);
         toggleButtonsGameActive();
-        chooseSong();
+        if(document.getElementById("song_random_notes").checked){
+            timer = setInterval(addRandomNote, speed);
+        }
+        else{
+            var noteArray = createNoteArray();
+            playSong(noteArray);
+        }
     }
 
     function stopGame() {
@@ -159,27 +165,30 @@
         alert("Your final score was: " + score);
     }
 
-    function chooseSong() {
-        if(document.getElementById("song_random_notes").checked){
-            timer = setInterval(addRandomNote, speed);
+    function createNoteArray() {
+        if(document.getElementById("song_mary_had").checked){
+            return [2, 1, 0, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2];
         }
-        else if(document.getElementById("song_mary_had").checked){
-            var notes = [2, 1, 0, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2];
-            var i = notes.length;
-            playSong(i);
-            function playSong(i) {
-                if (i < 0) stopGame();
-                setTimeout(function () {
-                    addNote(notes[notes.length - i]);
-                    playSong(--i);
-                }, speed);
-            }
+        else if(document.getElementById("song_yankee_doodle").checked){
+            return [1];
+        }
+        else if(document.getElementById("song_twinkle_2x").checked){
+            return [5];
         }
         else{
             clearInterval(timer2);
             toggleButtonsGameInactive();
             alert("Please select a song from the Song Library!");
         }
+    }
+
+    function playSong(notes) {
+        i = notes.length;
+        if (i < 0) stopGame();
+        setTimeout(function () {
+            addNote(notes[notes.length - i]);
+            playSong(--i);
+        }, speed);
     }
 
     function playSound(note) {
@@ -285,6 +294,8 @@
         document.getElementById('button_b').disabled = true;
         document.getElementById('song_random_notes').disabled = false;
         document.getElementById('song_mary_had').disabled = false;
+        document.getElementById('song_yankee_doodle').disabled = false;
+        document.getElementById('song_twinkle_2x').disabled = false;
 
     }
 
@@ -300,14 +311,30 @@
         document.getElementById('button_b').disabled = false;
         document.getElementById('song_random_notes').disabled = true;
         document.getElementById('song_mary_had').disabled = true;
+        document.getElementById('song_yankee_doodle').disabled = true;
+        document.getElementById('song_twinkle_2x').disabled = true;
     }
 
     function uncheckOthers(num) {
         if(num==1){
             document.getElementById("song_mary_had").checked = false;
+            document.getElementById("song_yankee_doodle").checked = false;
+            document.getElementById("song_twinkle_2x").checked = false;
         }
         if(num==2){
             document.getElementById("song_random_notes").checked = false;
+            document.getElementById("song_yankee_doodle").checked = false;
+            document.getElementById("song_twinkle_2x").checked = false;
+        }
+        if(num==3){
+            document.getElementById("song_random_notes").checked = false;
+            document.getElementById("song_mary_had").checked = false;
+            document.getElementById("song_twinkle_2x").checked = false;
+        }
+        if(num==4){
+            document.getElementById("song_random_notes").checked = false;
+            document.getElementById("song_mary_had").checked = false;
+            document.getElementById("song_yankee_doodle").checked = false;
         }
     }
 
@@ -402,7 +429,9 @@
             <h4>Song Library</h4>
             <form>
                 <input type="radio" onclick="uncheckOthers(1)" id="song_random_notes" checked="checked"><b>Random Notes (default)</b><br>
-                <input type="radio" onclick="uncheckOthers(2)" id="song_mary_had">Mary Had a Little Lamb
+                <input type="radio" onclick="uncheckOthers(2)" id="song_mary_had">Mary Had a Little Lamb<br>
+                <input type="radio" onclick="uncheckOthers(3)" id="song_yankee_doodle">Yankee Doodle<br>
+                <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
         </div>
         <div class="col-lg-4 col-md-4">
