@@ -183,7 +183,7 @@
     }
 
     function playSong(notes) {
-        i = notes.length;
+        var i = notes.length;
         if (i < 0) stopGame();
         setTimeout(function () {
             addNote(notes[notes.length - i]);
