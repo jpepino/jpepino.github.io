@@ -169,11 +169,11 @@
         if(document.getElementById("song_mary_had").checked){
             return [2, 1, 0, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2];
         }
-        else if(document.getElementById("song_yankee_doodle").checked){
-            return [1];
+        else if(document.getElementById("song_muffin_man").checked){
+            return [0, 4, 4, 5, 6, 4, 4, 3, 2, 4, 4, 3, 2, 0, 0, 0, 4, 4, 5, 6, 4, 4, 4, 5, 5, 0, 0, 4];
         }
         else if(document.getElementById("song_twinkle_2x").checked){
-            return [5];
+            return [0, 0, 4, 4, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0, 4, 4, 3, 3, 2, 2, 1, 4, 4, 3, 3, 2, 2, 1];
         }
         else{
             clearInterval(timer2);
@@ -294,7 +294,7 @@
         document.getElementById('button_b').disabled = true;
         document.getElementById('song_random_notes').disabled = false;
         document.getElementById('song_mary_had').disabled = false;
-        document.getElementById('song_yankee_doodle').disabled = false;
+        document.getElementById('song_muffin_man').disabled = false;
         document.getElementById('song_twinkle_2x').disabled = false;
 
     }
@@ -311,19 +311,19 @@
         document.getElementById('button_b').disabled = false;
         document.getElementById('song_random_notes').disabled = true;
         document.getElementById('song_mary_had').disabled = true;
-        document.getElementById('song_yankee_doodle').disabled = true;
+        document.getElementById('song_muffin_man').disabled = true;
         document.getElementById('song_twinkle_2x').disabled = true;
     }
 
     function uncheckOthers(num) {
         if(num==1){
             document.getElementById("song_mary_had").checked = false;
-            document.getElementById("song_yankee_doodle").checked = false;
+            document.getElementById("song_muffin_man").checked = false;
             document.getElementById("song_twinkle_2x").checked = false;
         }
         if(num==2){
             document.getElementById("song_random_notes").checked = false;
-            document.getElementById("song_yankee_doodle").checked = false;
+            document.getElementById("song_muffin_man").checked = false;
             document.getElementById("song_twinkle_2x").checked = false;
         }
         if(num==3){
@@ -334,7 +334,7 @@
         if(num==4){
             document.getElementById("song_random_notes").checked = false;
             document.getElementById("song_mary_had").checked = false;
-            document.getElementById("song_yankee_doodle").checked = false;
+            document.getElementById("song_muffin_man").checked = false;
         }
     }
 
@@ -430,7 +430,7 @@
             <form>
                 <input type="radio" onclick="uncheckOthers(1)" id="song_random_notes" checked="checked"><b>Random Notes (default)</b><br>
                 <input type="radio" onclick="uncheckOthers(2)" id="song_mary_had">Mary Had a Little Lamb<br>
-                <input type="radio" onclick="uncheckOthers(3)" id="song_yankee_doodle">Yankee Doodle<br>
+                <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
         </div>
