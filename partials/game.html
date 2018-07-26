@@ -172,17 +172,13 @@
         }
         clearInterval(timer2);
         toggleButtonsGameInactive();
-
-
-
-        alert("Your final score was: " + score + "\n" +
-              "You missed C this many times: " + (parseInt(misses[0]) + parseInt(misses[7])) + "\n" +
-        "You missed D this many times: " + misses[1] + "\n" +
-        "You missed E this many times: " + misses[2] + "\n" +
-        "You missed F this many times: " + misses[3] + "\n" +
-        "You missed G this many times: " + misses[4] + "\n" +
-        "You missed A this many times: " + misses[5] + "\n" +
-        "You missed B this many times: " + misses[6]);
+        var indicesOfMisses = getMostMisses(misses);
+        // for(var i = 0; i<indicesOfMisses.length; i++){
+        //     indicesOfMisses[i] = convert(indicesOfMisses[i]);
+        // }
+        
+        alert("Your final score was: " + score + "\n\n" +
+              "Most missed notes: " + indicesOfMisses.toString());
     }
 
     function createNoteArray() {
@@ -338,6 +334,20 @@
         document.getElementById('song_mary_had').disabled = true;
         document.getElementById('song_muffin_man').disabled = true;
         document.getElementById('song_twinkle_2x').disabled = true;
+    }
+
+    function getMostMisses(arr) {
+        var max = -Infinity;
+        var maxIndices = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === max) {
+                maxIndices.push(i);
+            } else if (arr[i] > max) {
+                maxIndices = [i];
+                max = arr[i];
+            }
+        }
+        return maxIndices;
     }
 
     function uncheckOthers(num) {
