@@ -188,7 +188,7 @@
     }
 
     function playSong(notes, i) {
-        if (i < 0){
+        if (i < 0  && visibleNoteGroups.length==0){
             stopGame();
             return;
         }
