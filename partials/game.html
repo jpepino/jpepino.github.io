@@ -88,7 +88,7 @@
     const visibleNotes = [];
 
     var score = 0;
-    var misses = [0, 0, 0, 0 ,0, 0, 0]
+    var misses = [0, 0, 0, 0 ,0, 0, 0];
 
     // Add a random note to the staff from the notes array
     function addRandomNote() {
@@ -174,13 +174,13 @@
         toggleButtonsGameInactive();
 
         alert("Your final score was: " + score + "\n" +
-              "You missed C this many times: "  + "\n" +
-        "You missed D this many times: "  + "\n" +
-        "You missed E this many times: "  + "\n" +
-        "You missed F this many times: "  + "\n" +
-        "You missed G this many times: "  + "\n" +
-        "You missed A this many times: "  + "\n" +
-        "You missed B this many times: ");
+              "You missed C this many times: " + Math.add(misses[0],misses[7]) + "\n" +
+        "You missed D this many times: " + misses[1] + "\n" +
+        "You missed E this many times: " + misses[2] + "\n" +
+        "You missed F this many times: " + misses[3] + "\n" +
+        "You missed G this many times: " + misses[4] + "\n" +
+        "You missed A this many times: " + misses[5] + "\n" +
+        "You missed B this many times: " + misses[6]);
     }
 
     function createNoteArray() {
@@ -456,7 +456,7 @@
                 <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
-            <p>update 2128</p>
+            <p>update 2132</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
