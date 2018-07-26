@@ -203,6 +203,8 @@
             var audioString = "audio_" + note;
         }
         var audio = document.getElementById(audioString);
+        audio.pause();
+        audio.currentTime = 0;
         audio.play();
     }
 
