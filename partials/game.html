@@ -281,10 +281,10 @@
     }
 
     function updateAccuracy(){
-        accuracy = hitCount / (hitCount+missCount);
+        accuracy = (hitCount / (hitCount+missCount)) * 100;
         document.getElementById("hits").innerHTML = "Hits: " + hitCount;
         document.getElementById("misses").innerHTML = "Misses: " + missCount;
-        document.getElementById("accuracy").innerHTML = accuracy.toString() + "%";
+        document.getElementById("accuracy").innerHTML = Math.round(accuracy*100)/100 + "%";
     }
 
     function updateTime() {
@@ -514,7 +514,7 @@
             </form>
             <p id="hits">Hits: N/A</p>
             <p id="misses">Misses: N/A</p>
-            <p>update 1445</p>
+            <p>update 1448</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
