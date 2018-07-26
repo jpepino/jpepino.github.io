@@ -5,13 +5,13 @@
     var div = document.getElementById("graphic")
     var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
-    renderer.resize(680, 480);
-    renderer.ctx.setViewBox(0, 0, 325, 240);
+    renderer.resize(750, 480);
+    renderer.ctx.setViewBox(0, 0, 400, 240);
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-    var stave = new VF.Stave(10, 0, 320);
-    var stave2 = new VF.Stave(10, 100, 320);
+    var stave = new VF.Stave(10, 0, 400);
+    var stave2 = new VF.Stave(10, 100, 400);
 
     stave.addClef("treble").addTimeSignature("4/4");
     stave.setContext(context).draw();
