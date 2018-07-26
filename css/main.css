@@ -37,11 +37,25 @@ body {
 }
 
 #time_label {
-    float: right;
+    float: left;
     width: 150px;
     height: 12px;
     text-align: center;
     font-weight: bold;
+}
+
+#accuracy_label {
+    float: left;
+    width: 150px;
+    height: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#blank_label {
+    float: left;
+    width: 75px;
+    height: 12px;
 }
 
 #metrics {
@@ -82,7 +96,7 @@ body {
     font-weight: bold;
 }
 
-#empty_space {
+#blank_container {
     float: left;
     width: 75px;
     height: 50px;
