@@ -72,6 +72,15 @@ body {
     font-weight: bold;
 }
 
+#accuracy_container {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #000000;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
 #game_container {
     width: 1000px;
     height: 240px;
