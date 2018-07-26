@@ -32,7 +32,7 @@
     // Connect it to the rendering context and draw!
     stave.setContext(context).draw();
 
-    var durations = ['1'];
+    var durations = ['4'];
 
     var notes = [
         ['c', '', '4'],
@@ -88,6 +88,7 @@
     const visibleNotes = [];
 
     var score = 0;
+    var misses = [0, 0, 0, 0 ,0, 0, 0]
 
     // Add a random note to the staff from the notes array
     function addRandomNote() {
@@ -107,6 +108,7 @@
             if (index === -1) return;
             group.classList.add('too-slow');
             visibleNoteGroups.shift();
+            misses[visibleNotes[0]]++;
             visibleNotes.shift();
             updateScore(-10);
         }, 5000);
@@ -128,6 +130,7 @@
             if (index === -1) return;
             group.classList.add('too-slow');
             visibleNoteGroups.shift();
+            misses[visibleNotes[0]]++;
             visibleNotes.shift();
             updateScore(-10);
         }, 5000);
@@ -170,7 +173,14 @@
         clearInterval(timer2);
         toggleButtonsGameInactive();
 
-        alert("Your final score was: " + score);
+        alert("Your final score was: " + score + "\n" +
+              "You missed C this many times: " + Math.add(misses[0],misses[7]) + "\n"
+        "You missed D this many times: " + misses[1] + "\n"
+        "You missed E this many times: " + misses[2] + "\n"
+        "You missed F this many times: " + misses[3] + "\n"
+        "You missed G this many times: " + misses[4] + "\n"
+        "You missed A this many times: " + misses[5] + "\n"
+        "You missed B this many times: " + misses[6] + "\n");
     }
 
     function createNoteArray() {
@@ -228,6 +238,7 @@
             playSound("wrong");
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
+            misses[visibleNotes[0]]++;
             updateScore(-10);
         }
         visibleNotes.shift();
