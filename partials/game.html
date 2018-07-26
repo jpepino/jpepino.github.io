@@ -174,7 +174,7 @@
         toggleButtonsGameInactive();
 
         alert("Your final score was: " + score + "\n" +
-              "You missed C this many times: " + Math.add(misses[0],misses[7]) + "\n" +
+              "You missed C this many times: " + misses[0] + "\n" +
         "You missed D this many times: " + misses[1] + "\n" +
         "You missed E this many times: " + misses[2] + "\n" +
         "You missed F this many times: " + misses[3] + "\n" +
@@ -238,7 +238,6 @@
             playSound("wrong");
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
-            alert("YOU MISSED" + visibleNotes[0]);
             misses[visibleNotes[0]]++;
             updateScore(-10);
         }
@@ -457,7 +456,7 @@
                 <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
-            <p>update 2140</p>
+            <p>update 2141</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
