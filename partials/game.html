@@ -173,8 +173,10 @@
         clearInterval(timer2);
         toggleButtonsGameInactive();
 
+
+
         alert("Your final score was: " + score + "\n" +
-              "You missed C this many times: " + misses[0] + "\n" +
+              "You missed C this many times: " + (parseInt(misses[0]) + parseInt(misses[7])) + "\n" +
         "You missed D this many times: " + misses[1] + "\n" +
         "You missed E this many times: " + misses[2] + "\n" +
         "You missed F this many times: " + misses[3] + "\n" +
