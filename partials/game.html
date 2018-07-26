@@ -158,7 +158,7 @@
         hitCount = 0;
         missCount = 0;
         accuracy = 0;
-        updateAccuracy();
+        document.getElementById("accuracy").innerHTML = "0%";
         if(document.getElementById("song_random_notes").checked){
             timer = setInterval(addRandomNote, speed);
         }
@@ -511,7 +511,6 @@
                 <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
-            <p>update 1506</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
