@@ -10,8 +10,8 @@
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-    var stave = new VF.Stave(10, 0, 400);
-    var stave2 = new VF.Stave(10, 100, 400);
+    var stave = new VF.Stave(10, 0, 380);
+    var stave2 = new VF.Stave(10, 100, 380);
 
     stave.addClef("treble").addTimeSignature("4/4");
     stave.setContext(context).draw();
@@ -26,6 +26,20 @@
     voice.addTickables(notes);
     var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
     voice.draw(context, stave);
+
+    stave2.addClef("treble").addTimeSignature("4/4");
+    stave2.setContext(context).draw();
+    var notes2 = [
+        new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["a/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: "q" }),
+        new VF.StaveNote({clef: "treble", keys: ["c/5"], duration: "q" })
+    ];
+    var voice2 = new VF.Voice({num_beats: 4,  beat_value: 4});
+    voice2.setStrict(false);
+    voice2.addTickables(notes2);
+    var formatter2 = new VF.Formatter().joinVoices([voice2]).format([voice2], 400);
+    voice2.draw(context, stave2);
 
 </script>
 
