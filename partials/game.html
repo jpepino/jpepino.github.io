@@ -89,6 +89,9 @@
 
     var score = 0;
     var misses = [0, 0, 0, 0 ,0, 0, 0, 0];
+    var missCount;
+    var hitCount;
+    var accuracy;
 
     // Add a random note to the staff from the notes array
     function addRandomNote() {
@@ -110,7 +113,9 @@
             visibleNoteGroups.shift();
             misses[visibleNotes[0]]++;
             visibleNotes.shift();
+            missCount++;
             updateScore(-10);
+            updateAccuracy();
         }, 5000);
     }
 
@@ -132,7 +137,9 @@
             visibleNoteGroups.shift();
             misses[visibleNotes[0]]++;
             visibleNotes.shift();
+            missCount++;
             updateScore(-10);
+            updateAccuracy();
         }, 5000);
     }
 
@@ -148,6 +155,9 @@
         timer2 = setInterval(updateTime, 1000);
         toggleButtonsGameActive();
         misses = [0, 0, 0, 0, 0, 0, 0, 0];
+        var hitCount = 0;
+        var missCount = 0;
+        var accuracy = 0;
         if(document.getElementById("song_random_notes").checked){
             timer = setInterval(addRandomNote, speed);
         }
@@ -237,14 +247,18 @@
             const transformMatrix = window.getComputedStyle(group).transform;
             const x = transformMatrix.split(',')[4].trim();
             group.style.transform = `translate(${x}px, -800px)`;
+            hitCount++;
             updateScore(10);
+            updateAccuracy();
         }
         else if(guess != visibleNotes[0]){
             playSound("wrong");
             group = visibleNoteGroups.shift();
             group.classList.add('too-slow');
             misses[visibleNotes[0]]++;
+            missCount++;
             updateScore(-10);
+            updateAccuracy();
         }
         visibleNotes.shift();
     }
@@ -264,6 +278,11 @@
             document.getElementById("score").innerHTML = score;
         }
         
+    }
+
+    function updateAccuracy(){
+        accuracy = hitCount / (hitCount+missCount);
+        document.getElementByid("accuracy").innerHTML = accuracy + "%";
     }
 
     function updateTime() {
@@ -475,6 +494,7 @@
                 <input type="radio" onclick="uncheckOthers(3)" id="song_muffin_man">The Muffin Man<br>
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
+            <p id="accuracy">Accuracy: N/A</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
