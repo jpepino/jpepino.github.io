@@ -92,7 +92,7 @@
     // Add a random note to the staff from the notes array
     function addRandomNote() {
         var randVal = Math.floor(Math.random() * notes.length);
-        note = notes[randVal];
+        var note = notes[randVal];
         visibleNotes.push(randVal);
         if (!note) return;
         const group = context.openGroup();
@@ -113,7 +113,7 @@
     }
 
     function addNote(noteVal) {
-        note = notes[noteVal];
+        var note = notes[noteVal];
         visibleNotes.push(noteVal);
         if (!note) return;
         const group = context.openGroup();
