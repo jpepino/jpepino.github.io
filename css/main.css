@@ -45,7 +45,7 @@ body {
 }
 
 #metrics {
-    width: 450px;
+    width: 600px;
     height: 65px;
     margin-left: auto;
     margin-right: auto;
@@ -63,7 +63,7 @@ body {
 }
 
 #time_container {
-    float: right;
+    float: left;
     width: 150px;
     height: 50px;
     border: 1px solid #000000;
@@ -73,12 +73,19 @@ body {
 }
 
 #accuracy_container {
+    float: left;
     width: 150px;
     height: 50px;
     border: 1px solid #000000;
     text-align: center;
     font-size: 36px;
     font-weight: bold;
+}
+
+#empty_space {
+    float: left;
+    width: 75px;
+    height: 50px;
 }
 
 #game_container {
