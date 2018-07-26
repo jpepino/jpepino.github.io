@@ -282,6 +282,8 @@
 
     function updateAccuracy(){
         accuracy = hitCount / (hitCount+missCount);
+        document.getElementById("hits").innerHTML = "Hits: " + hitCount;
+        document.getElementById("misses").innerHTML = "Misses: " + missCount;
         document.getElementById("accuracy").innerHTML = accuracy.toString() + "%";
     }
 
@@ -495,7 +497,9 @@
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
             <p id="accuracy">Accuracy: N/A</p>
-            <p>update 1415</p>
+            <p id="hits">Hits: N/A</p>
+            <p id="misses">Misses: N/A</p>
+            <p>update 1420</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
