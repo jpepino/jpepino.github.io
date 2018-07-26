@@ -282,7 +282,7 @@
 
     function updateAccuracy(){
         accuracy = hitCount / (hitCount+missCount);
-        document.getElementById("accuracy").innerHTML = accuracy + "%";
+        document.getElementById("accuracy").innerHTML = accuracy.toString() + "%";
     }
 
     function updateTime() {
@@ -495,6 +495,7 @@
                 <input type="radio" onclick="uncheckOthers(4)" id="song_twinkle_2x">Twinkle, Twinkle Little Star
             </form>
             <p id="accuracy">Accuracy: N/A</p>
+            <p>update 1415</p>
         </div>
         <div class="col-lg-4 col-md-4">
             <a class="btn btn-lg btn-primary pull-right" href="#/tutorial1-1">Play Tutorial</a><br>
