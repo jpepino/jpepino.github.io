@@ -164,7 +164,6 @@
         }
         else{
             clearTimeout(timer);
-            timer = "";
         }
         clearInterval(timer2);
         toggleButtonsGameInactive();
@@ -189,7 +188,10 @@
     }
 
     function playSong(notes, i) {
-        if (i < 0) stopGame();
+        if (i < 0){
+            stopGame();
+            return;
+        }
         timer = setTimeout(function () {
             addNote(notes[notes.length - i]);
             playSong(notes, --i);
