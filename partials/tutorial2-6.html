@@ -11,6 +11,8 @@
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
     var stave = new VF.Stave(10, 0, 320);
+    var stave2 = new VF.Stave(10, 100, 320);
+
     stave.addClef("treble").addTimeSignature("4/4");
 
     stave.setContext(context).draw();
