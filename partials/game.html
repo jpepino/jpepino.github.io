@@ -159,7 +159,12 @@
             group.classList.add('too-slow');
             visibleNotes.shift();
         }
-        clearInterval(timer);
+        if(document.getElementById("song_random_notes").checked){
+            clearInterval(timer);
+        }
+        else{
+            clearTimeout(timer);
+        }
         clearInterval(timer2);
         toggleButtonsGameInactive();
         alert("Your final score was: " + score);
@@ -184,7 +189,7 @@
 
     function playSong(notes, i) {
         if (i < 0) stopGame();
-        setTimeout(function () {
+        timer = setTimeout(function () {
             addNote(notes[notes.length - i]);
             playSong(notes, --i);
         }, speed);
