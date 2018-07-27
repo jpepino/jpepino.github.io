@@ -190,12 +190,12 @@
         }
         if(Math.max(...misses) == 0) {
             alert("Your final score was: " + score + "\n\n" +
-                "Your accuracy was: " + accuracy + "\n\n" +
+                "Your accuracy was: " + Math.round(accuracy*100)/100 + "%\n\n" +
                 "You didn't miss any notes! Congratulations!");
         }
         else{
-            alert("Your final score was: " + score + "%\n\n" +
-                "Your accuracy was: " + accuracy + "%\n\n" +
+            alert("Your final score was: " + score + "\n\n" +
+                "Your accuracy was: " + Math.round(accuracy*100)/100 + "%\n\n" +
                 "Most missed notes: " + indicesOfMisses.toString() + "\n" +
                 "Practice these notes more!");
         }
